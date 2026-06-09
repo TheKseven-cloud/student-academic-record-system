@@ -292,16 +292,30 @@ const data = {
 
 };
 
-await fetch(
-"https://script.google.com/macros/s/AKfycbyrGFZ31tcnvyyh4jxVNGaYQoG6wVMlJFTrSLwPdKCTgL2sxwxQJspR27qROnYRduve/exec",
-{
-    method:"POST",
-    body:JSON.stringify(data)
-});
+try {
 
-alert(
-    "Academic Record Submitted Successfully!"
-);
+    const response = await fetch(
+    "https://script.google.com/macros/s/AKfycbyrGFZ31tcnvyyh4jxVNGaYQoG6wVMlJFTrSLwPdKCTgL2sxwxQJspR27qROnYRduve/exec",
+    {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
+
+    console.log("Response:", response);
+
+    alert("Academic Record Submitted Successfully!");
+
+}
+catch(error) {
+
+    console.error("FETCH ERROR:", error);
+
+    alert("Error: " + error);
+
+}
 console.log(data);
 
 }
