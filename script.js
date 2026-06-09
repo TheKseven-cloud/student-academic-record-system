@@ -298,8 +298,7 @@ try {
    "https://script.google.com/macros/s/AKfycbyrGFZ31tcnvyyh4jxVNGaYQoG6wVMlJFTrSLwPdKCTgL2sxwxQJspR27qROnYRduve/exec",
     {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json"
+        mode: "no-cors",
         },
         body: JSON.stringify(data)
     });
