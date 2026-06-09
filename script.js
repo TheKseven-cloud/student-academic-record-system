@@ -299,7 +299,6 @@ try {
     {
         method: "POST",
         mode: "no-cors",
-        },
         body: JSON.stringify(data)
     });
 
