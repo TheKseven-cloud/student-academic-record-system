@@ -292,8 +292,16 @@ const data = {
 
 };
 
-https://script.google.com/macros/s/AKfycbyrGFZ31tcnvyyh4jxVNGaYQoG6wVMlJFTrSLwPdKCTgL2sxwxQJspR27qROnYRduve/exec
+await fetch(
+"https://script.google.com/macros/s/AKfycbyrGFZ31tcnvyyh4jxVNGaYQoG6wVMlJFTrSLwPdKCTgL2sxwxQJspR27qROnYRduve/exec",
+{
+    method:"POST",
+    body:JSON.stringify(data)
+});
 
+alert(
+    "Academic Record Submitted Successfully!"
+);
 console.log(data);
 
 }
