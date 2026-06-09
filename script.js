@@ -295,7 +295,7 @@ const data = {
 try {
 
     const response = await fetch(
-    "https://script.google.com/macros/library/d/1L_i1IssTjoaCq5eLm3LV1gIoYXYya6WqFGJkAqZ0Hgku-F-IF8PIQHhr/1",
+    "https://script.google.com/macros/s/AKfycbyrGFZ31tcnvyyh4jxVNGaYQoG6wVMlJFTrSLwPdKCTgL2sxwxQJspR27qROnYRduve/exec",
     {
         method: "POST",
         headers: {
