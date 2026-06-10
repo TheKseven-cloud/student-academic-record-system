@@ -1,33 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Plus Jakarta Sans',sans-serif;
+font-family:'Manrope',sans-serif;
 }
 
 :root{
 
---bg:#faf8f5;
+--bg:#f5f7fb;
 
 --card:#ffffff;
 
---text:#111827;
+--primary:#2563eb;
 
---muted:#6b7280;
+--primary-dark:#1d4ed8;
 
---border:#ececec;
+--text:#0f172a;
 
---blue:#60a5fa;
+--muted:#64748b;
 
---purple:#c084fc;
+--border:#e2e8f0;
 
---pink:#f9a8d4;
+--success:#10b981;
 
---yellow:#fde68a;
-
---green:#86efac;
+--warning:#f59e0b;
 
 }
 
@@ -35,17 +33,17 @@ body{
 
 background:var(--bg);
 
-padding:50px 20px;
+min-height:100vh;
 
-overflow-x:hidden;
+padding:50px 20px;
 
 position:relative;
 
-min-height:100vh;
+overflow-x:hidden;
 
 }
 
-/* Decorative blobs */
+/* Background Decorations */
 
 body::before{
 
@@ -53,21 +51,23 @@ content:"";
 
 position:fixed;
 
-width:400px;
-height:400px;
+width:500px;
+height:500px;
 
-background:var(--pink);
+background:#93c5fd;
 
 border-radius:50%;
 
-filter:blur(140px);
+filter:blur(180px);
 
-opacity:.25;
+top:-250px;
+right:-150px;
 
-top:-150px;
-left:-100px;
+opacity:.4;
 
-pointer-events:none;
+z-index:-1;
+
+animation:float1 10s ease-in-out infinite;
 
 }
 
@@ -80,66 +80,121 @@ position:fixed;
 width:400px;
 height:400px;
 
-background:var(--blue);
+background:#c4b5fd;
 
 border-radius:50%;
 
-filter:blur(140px);
-
-opacity:.25;
+filter:blur(180px);
 
 bottom:-150px;
-right:-100px;
+left:-100px;
 
-pointer-events:none;
+opacity:.35;
+
+z-index:-1;
+
+animation:float2 12s ease-in-out infinite;
+
+}
+
+@keyframes float1{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(40px);
+}
+
+}
+
+@keyframes float2{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-40px);
+}
 
 }
 
 .container{
 
-max-width:1100px;
+max-width:1200px;
 
 margin:auto;
 
 }
 
+/* Main Card */
+
 .card{
 
-background:transparent;
+background:rgba(255,255,255,.75);
 
-padding:0;
+backdrop-filter:blur(20px);
 
-box-shadow:none;
+border:1px solid rgba(255,255,255,.5);
+
+border-radius:40px;
+
+padding:50px;
+
+box-shadow:
+0 10px 50px rgba(0,0,0,.08);
+
+animation:fadeUp .8s ease;
 
 }
 
-/* Hero */
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:
+translateY(30px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:
+translateY(0);
+
+}
+
+}
+
+/* Title */
 
 h1{
 
-font-size:64px;
+font-size:58px;
 
 font-weight:800;
 
-line-height:.95;
+line-height:1;
 
 color:var(--text);
 
-margin-bottom:50px;
+margin-bottom:10px;
 
 letter-spacing:-3px;
-
-max-width:700px;
 
 }
 
 h1::after{
 
-content:"Track academic records with style.";
+content:"Academic Intelligence System";
 
 display:block;
-
-margin-top:20px;
 
 font-size:18px;
 
@@ -149,9 +204,11 @@ letter-spacing:0;
 
 color:var(--muted);
 
+margin-top:18px;
+
 }
 
-/* Student Info */
+/* Student Section */
 
 section:first-of-type{
 
@@ -159,32 +216,14 @@ background:white;
 
 padding:30px;
 
-border-radius:32px;
-
-box-shadow:
-0 20px 40px rgba(0,0,0,.05);
-
-margin-bottom:35px;
+border-radius:28px;
 
 border:1px solid var(--border);
 
-position:relative;
+margin-bottom:30px;
 
-}
-
-section:first-of-type::before{
-
-content:"👤 Student Information";
-
-display:block;
-
-font-size:20px;
-
-font-weight:700;
-
-margin-bottom:20px;
-
-color:var(--text);
+box-shadow:
+0 8px 25px rgba(0,0,0,.04);
 
 }
 
@@ -196,77 +235,93 @@ background:white;
 
 padding:28px;
 
-border-radius:28px;
-
-margin-top:28px;
+border-radius:24px;
 
 border:1px solid var(--border);
 
-box-shadow:
-0 10px 25px rgba(0,0,0,.04);
-
-transition:.35s;
+margin-top:25px;
 
 position:relative;
 
-}
+overflow:hidden;
 
-.semester-card:nth-of-type(2){
+transition:.3s;
 
-transform:rotate(-1deg);
-
-background:#eff6ff;
-
-}
-
-.semester-card:nth-of-type(3){
-
-transform:rotate(1deg);
-
-background:#fdf4ff;
+box-shadow:
+0 4px 15px rgba(0,0,0,.03);
 
 }
 
-.semester-card:nth-of-type(4){
+.semester-card::before{
 
-transform:rotate(-1deg);
+content:"";
 
-background:#fffbeb;
+position:absolute;
 
-}
+top:0;
+left:0;
 
-.semester-card:nth-of-type(5){
+width:100%;
+height:4px;
 
-transform:rotate(1deg);
-
-background:#f0fdf4;
+background:
+linear-gradient(
+90deg,
+#2563eb,
+#8b5cf6
+);
 
 }
 
 .semester-card:hover{
 
 transform:
-translateY(-8px)
-rotate(0deg);
+translateY(-6px);
 
 box-shadow:
-0 25px 50px rgba(0,0,0,.08);
+0 20px 40px rgba(0,0,0,.08);
 
 }
 
-.semester-card h2{
+.semester-card:nth-of-type(2)::before{
+
+background:#3b82f6;
+
+}
+
+.semester-card:nth-of-type(3)::before{
+
+background:#10b981;
+
+}
+
+.semester-card:nth-of-type(4)::before{
+
+background:#f59e0b;
+
+}
+
+.semester-card:nth-of-type(5)::before{
+
+background:#ec4899;
+
+}
+
+/* Headings */
+
+h2{
 
 font-size:24px;
 
-font-weight:800;
-
-color:var(--text);
+font-weight:700;
 
 margin-bottom:20px;
 
+color:var(--text);
+
 }
 
-/* Inputs */
+/* Form */
 
 .form-group{
 
@@ -278,13 +333,13 @@ label{
 
 display:block;
 
+margin-bottom:8px;
+
 font-size:14px;
 
 font-weight:700;
 
-margin-bottom:8px;
-
-color:var(--text);
+color:var(--muted);
 
 }
 
@@ -295,9 +350,9 @@ width:100%;
 
 padding:16px;
 
-border-radius:16px;
+border-radius:14px;
 
-border:2px solid transparent;
+border:1px solid var(--border);
 
 background:white;
 
@@ -307,15 +362,22 @@ transition:.25s;
 
 }
 
+input:hover,
+select:hover{
+
+border-color:#cbd5e1;
+
+}
+
 input:focus,
 select:focus{
 
 outline:none;
 
-border-color:var(--blue);
+border-color:var(--primary);
 
 box-shadow:
-0 8px 25px rgba(96,165,250,.25);
+0 0 0 5px rgba(37,99,235,.12);
 
 }
 
@@ -323,21 +385,38 @@ box-shadow:
 
 .atkt-card{
 
-background:white;
+background:#fffaf0;
 
-border-radius:20px;
+border:1px solid #fde68a;
+
+border-radius:18px;
 
 padding:20px;
 
 margin-bottom:15px;
 
-border:2px dashed #f59e0b;
+position:relative;
+
+}
+
+.atkt-card::after{
+
+content:"⚠";
+
+position:absolute;
+
+right:15px;
+top:15px;
+
+font-size:18px;
+
+opacity:.4;
 
 }
 
 .atkt-card h3{
 
-color:#d97706;
+color:#b45309;
 
 margin-bottom:15px;
 
@@ -349,9 +428,9 @@ padding:14px 20px;
 
 border:none;
 
-border-radius:16px;
+border-radius:14px;
 
-background:#10b981;
+background:var(--success);
 
 color:white;
 
@@ -365,7 +444,10 @@ transition:.25s;
 
 .atkt-wrapper button:hover{
 
-transform:translateY(-3px);
+transform:
+translateY(-2px);
+
+filter:brightness(1.05);
 
 }
 
@@ -375,13 +457,22 @@ transform:translateY(-3px);
 
 width:100%;
 
-margin-top:35px;
-
 padding:22px;
+
+margin-top:35px;
 
 border:none;
 
-border-radius:24px;
+border-radius:18px;
+
+background:
+linear-gradient(
+135deg,
+#2563eb,
+#8b5cf6
+);
+
+color:white;
 
 font-size:18px;
 
@@ -389,27 +480,51 @@ font-weight:800;
 
 cursor:pointer;
 
-color:white;
+transition:.35s;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+#submitBtn::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:-120%;
+
+width:100%;
+height:100%;
 
 background:
 linear-gradient(
-135deg,
-#60a5fa,
-#c084fc
+90deg,
+transparent,
+rgba(255,255,255,.25),
+transparent
 );
 
-box-shadow:
-0 15px 35px rgba(96,165,250,.25);
+transition:.8s;
 
-transition:.3s;
+}
+
+#submitBtn:hover::before{
+
+left:120%;
 
 }
 
 #submitBtn:hover{
 
 transform:
-translateY(-4px)
-scale(1.01);
+translateY(-3px);
+
+box-shadow:
+0 20px 40px rgba(37,99,235,.25);
 
 }
 
@@ -421,12 +536,18 @@ width:10px;
 
 }
 
+::-webkit-scrollbar-track{
+
+background:#e5e7eb;
+
+}
+
 ::-webkit-scrollbar-thumb{
 
 background:
 linear-gradient(
-#60a5fa,
-#c084fc
+#2563eb,
+#8b5cf6
 );
 
 border-radius:20px;
@@ -437,18 +558,23 @@ border-radius:20px;
 
 @media(max-width:768px){
 
+.card{
+
+padding:25px;
+
+}
+
 h1{
 
-font-size:42px;
+font-size:38px;
 
 letter-spacing:-2px;
 
 }
 
-section:first-of-type,
-.semester-card{
+h2{
 
-padding:20px;
+font-size:20px;
 
 }
 
