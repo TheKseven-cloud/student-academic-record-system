@@ -357,6 +357,113 @@ if(!/^\d{10}$/.test(parentMobile)){
     return;
 
 }
+    // Semester Validation
+
+const resultStatuses =
+document.querySelectorAll(".result-status");
+
+for(const status of resultStatuses){
+
+    if(status.value === ""){
+
+        alert(
+        "Please select Result Status for all semesters."
+        );
+
+        return;
+
+    }
+
+    const semester =
+    status.dataset.semester;
+
+    const container =
+    document.getElementById(
+    `semester${semester}Container`
+    );
+
+    if(status.value === "pass"){
+
+        const sgpaInput =
+        container.querySelector(
+        'input[type="number"]'
+        );
+
+        if(
+            !sgpaInput ||
+            sgpaInput.value === ""
+        ){
+
+            alert(
+            `Please enter SGPA for Semester ${semester}`
+            );
+
+            return;
+
+        }
+
+    }
+
+    if(status.value === "atkt"){
+
+        const subjects =
+        container.querySelectorAll(
+        ".atkt-card"
+        );
+
+        for(const card of subjects){
+
+            const selects =
+            card.querySelectorAll(
+            "select"
+            );
+
+            const inputs =
+            card.querySelectorAll(
+            "input"
+            );
+
+            if(
+                selects[0].value === ""
+            ){
+
+                alert(
+                `Select ATKT Subject in Semester ${semester}`
+                );
+
+                return;
+
+            }
+
+            if(
+                inputs[0].value === ""
+            ){
+
+                alert(
+                `Enter Previous Marks in Semester ${semester}`
+                );
+
+                return;
+
+            }
+
+            if(
+                inputs[1].value === ""
+            ){
+
+                alert(
+                `Enter Current Marks in Semester ${semester}`
+                );
+
+                return;
+
+            }
+
+        }
+
+    }
+
+}
 
 const data = {
 
