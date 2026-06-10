@@ -266,30 +266,189 @@ document
 submitForm
 );
 
-async function submitForm(){
+async function async function submitForm() {
+
+const submitBtn =
+document.getElementById("submitBtn");
+
+const studentName =
+document.getElementById("studentName")
+.value.trim();
+
+const rollNumber =
+document.getElementById("rollNumber")
+.value.trim();
+
+const studentMobile =
+document.getElementById("studentMobile")
+.value.trim();
+
+const parentMobile =
+document.getElementById("parentMobile")
+.value.trim();
+
+document
+.querySelectorAll("input, select")
+.forEach(field => {
+field.style.border = "";
+});
+
+function showError(fieldId, message) {
+
+const field =
+document.getElementById(fieldId);
+
+if(field){
+
+    field.style.border =
+    "2px solid red";
+
+    field.focus();
+
+}
+
+alert(message);
+
+}
+
+if(studentName === ""){
+
+showError(
+    "studentName",
+    "Please enter Student Name."
+);
+
+return;
+
+}
+
+if(!/^[A-Za-z\s]+$/.test(studentName)){
+
+showError(
+    "studentName",
+    "Student Name should contain only alphabets."
+);
+
+return;
+
+}
+
+if(rollNumber === ""){
+
+showError(
+    "rollNumber",
+    "Please enter Roll Number."
+);
+
+return;
+
+}
+
+if(!/^\d+$/.test(rollNumber)){
+
+showError(
+    "rollNumber",
+    "Roll Number must contain numbers only."
+);
+
+return;
+
+}
+
+if(studentMobile === ""){
+
+showError(
+    "studentMobile",
+    "Please enter Student Mobile Number."
+);
+
+return;
+
+}
+
+if(!/^\d{10}$/.test(studentMobile)){
+
+showError(
+    "studentMobile",
+    "Student Mobile Number must contain exactly 10 digits."
+);
+
+return;
+
+}
+
+if(parentMobile === ""){
+
+showError(
+    "parentMobile",
+    "Please enter Parent Mobile Number."
+);
+
+return;
+
+}
+
+if(!/^\d{10}$/.test(parentMobile)){
+
+showError(
+    "parentMobile",
+    "Parent Mobile Number must contain exactly 10 digits."
+);
+
+return;
+
+}
 
 const data = {
 
-    name:
-    document.getElementById(
-    "studentName"
-    ).value,
+name: studentName,
 
-    roll:
-    document.getElementById(
-    "rollNumber"
-    ).value,
+roll: rollNumber,
 
-    studentMobile:
-    document.getElementById(
-    "studentMobile"
-    ).value,
+studentMobile,
 
-    parentMobile:
-    document.getElementById(
-    "parentMobile"
-    ).value
+parentMobile
 
+};
+
+try {
+
+submitBtn.disabled = true;
+
+submitBtn.innerText =
+"Submitting...";
+
+await fetch(
+"https://script.google.com/macros/s/AKfycbyrGFZ31tcnvyyh4jxVNGaYQoG6wVMlJFTrSLwPdKCTgL2sxwxQJspR27qROnYRduve/exec",
+{
+    method: "POST",
+    body: JSON.stringify(data)
+});
+
+alert(
+"Academic Record Submitted Successfully!"
+);
+
+}
+catch(error){
+
+console.error(error);
+
+alert(
+"Submission Failed. Please try again."
+);
+
+}
+finally{
+
+submitBtn.disabled = false;
+
+submitBtn.innerText =
+"Submit Academic Record";
+
+}
+
+}
 };
 
 try {
