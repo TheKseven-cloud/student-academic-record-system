@@ -495,7 +495,8 @@ catch(error){
 
 console.log(data);
 
-/* PARTICLES */
+}
+
 document.addEventListener(
 "DOMContentLoaded",
 ()=>{
@@ -505,7 +506,8 @@ document.getElementById(
 "particles"
 );
 
-if(!particleContainer) return;
+if(!particleContainer)
+return;
 
 for(let i=0;i<40;i++){
 
