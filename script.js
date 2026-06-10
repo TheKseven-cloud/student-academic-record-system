@@ -266,189 +266,108 @@ document
 submitForm
 );
 
-async function submitForm() {
-
-const submitBtn =
-document.getElementById("submitBtn");
+async function submitForm(){
 
 const studentName =
-document.getElementById("studentName")
-.value.trim();
+document.getElementById(
+"studentName"
+).value.trim();
 
 const rollNumber =
-document.getElementById("rollNumber")
-.value.trim();
+document.getElementById(
+"rollNumber"
+).value.trim();
 
 const studentMobile =
-document.getElementById("studentMobile")
-.value.trim();
+document.getElementById(
+"studentMobile"
+).value.trim();
 
 const parentMobile =
-document.getElementById("parentMobile")
-.value.trim();
-
-document
-.querySelectorAll("input, select")
-.forEach(field => {
-field.style.border = "";
-});
-
-function showError(fieldId, message) {
-
-const field =
-document.getElementById(fieldId);
-
-if(field){
-
-    field.style.border =
-    "2px solid red";
-
-    field.focus();
-
-}
-
-alert(message);
-
-}
+document.getElementById(
+"parentMobile"
+).value.trim();
 
 if(studentName === ""){
 
-showError(
-    "studentName",
+    alert(
     "Please enter Student Name."
-);
+    );
 
-return;
-
-}
-
-if(!/^[A-Za-z\s]+$/.test(studentName)){
-
-showError(
-    "studentName",
-    "Student Name should contain only alphabets."
-);
-
-return;
+    return;
 
 }
 
 if(rollNumber === ""){
 
-showError(
-    "rollNumber",
+    alert(
     "Please enter Roll Number."
-);
+    );
 
-return;
+    return;
 
 }
 
 if(!/^\d+$/.test(rollNumber)){
 
-showError(
-    "rollNumber",
+    alert(
     "Roll Number must contain numbers only."
-);
+    );
 
-return;
+    return;
 
 }
 
 if(studentMobile === ""){
 
-showError(
-    "studentMobile",
+    alert(
     "Please enter Student Mobile Number."
-);
+    );
 
-return;
+    return;
 
 }
 
 if(!/^\d{10}$/.test(studentMobile)){
 
-showError(
-    "studentMobile",
+    alert(
     "Student Mobile Number must contain exactly 10 digits."
-);
+    );
 
-return;
+    return;
 
 }
 
 if(parentMobile === ""){
 
-showError(
-    "parentMobile",
+    alert(
     "Please enter Parent Mobile Number."
-);
+    );
 
-return;
+    return;
 
 }
 
 if(!/^\d{10}$/.test(parentMobile)){
 
-showError(
-    "parentMobile",
+    alert(
     "Parent Mobile Number must contain exactly 10 digits."
-);
+    );
 
-return;
+    return;
 
 }
 
 const data = {
 
-name: studentName,
+    name: studentName,
 
-roll: rollNumber,
+    roll: rollNumber,
 
-studentMobile,
+    studentMobile: studentMobile,
 
-parentMobile
+    parentMobile: parentMobile
 
-};
-
-try {
-
-submitBtn.disabled = true;
-
-submitBtn.innerText =
-"Submitting...";
-
-await fetch(
-"https://script.google.com/macros/s/AKfycbyrGFZ31tcnvyyh4jxVNGaYQoG6wVMlJFTrSLwPdKCTgL2sxwxQJspR27qROnYRduve/exec",
-{
-    method: "POST",
-    body: JSON.stringify(data)
-});
-
-alert(
-"Academic Record Submitted Successfully!"
-);
-
-}
-catch(error){
-
-console.error(error);
-
-alert(
-"Submission Failed. Please try again."
-);
-
-}
-finally{
-
-submitBtn.disabled = false;
-
-submitBtn.innerText =
-"Submit Academic Record";
-
-}
-
-}
 };
 
 try {
