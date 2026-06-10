@@ -289,93 +289,56 @@ document.getElementById(
 ).value.trim();
 
 if(studentName === ""){
-
-    alert(
-    "Please enter Student Name."
-    );
-
+    alert("Please enter Student Name.");
     return;
-
 }
 
 if(rollNumber === ""){
-
-    alert(
-    "Please enter Roll Number."
-    );
-
+    alert("Please enter Roll Number.");
     return;
-
 }
 
 if(!/^\d+$/.test(rollNumber)){
-
-    alert(
-    "Roll Number must contain numbers only."
-    );
-
+    alert("Roll Number must contain numbers only.");
     return;
-
 }
 
 if(studentMobile === ""){
-
-    alert(
-    "Please enter Student Mobile Number."
-    );
-
+    alert("Please enter Student Mobile Number.");
     return;
-
 }
 
 if(!/^\d{10}$/.test(studentMobile)){
-
-    alert(
-    "Student Mobile Number must contain exactly 10 digits."
-    );
-
+    alert("Student Mobile Number must contain exactly 10 digits.");
     return;
-
 }
 
 if(parentMobile === ""){
-
-    alert(
-    "Please enter Parent Mobile Number."
-    );
-
+    alert("Please enter Parent Mobile Number.");
     return;
-
 }
 
 if(!/^\d{10}$/.test(parentMobile)){
-
-    alert(
-    "Parent Mobile Number must contain exactly 10 digits."
-    );
-
+    alert("Parent Mobile Number must contain exactly 10 digits.");
     return;
-
 }
-    // Semester Validation
 
-const resultStatuses =
+const semesterData = [];
+
+const statuses =
 document.querySelectorAll(".result-status");
 
-for(const status of resultStatuses){
-
-    if(status.value === ""){
-
-        alert(
-        "Please select Result Status for all semesters."
-        );
-
-        return;
-
-    }
+for(const status of statuses){
 
     const semester =
     status.dataset.semester;
+
+    if(status.value === ""){
+        alert(
+        `Please select Result Status for Semester ${semester}`
+        );
+        return;
+    }
 
     const container =
     document.getElementById(
@@ -384,82 +347,104 @@ for(const status of resultStatuses){
 
     if(status.value === "pass"){
 
-        const sgpaInput =
+        const sgpa =
         container.querySelector(
         'input[type="number"]'
         );
 
         if(
-            !sgpaInput ||
-            sgpaInput.value === ""
+            !sgpa ||
+            sgpa.value.trim() === ""
         ){
-
             alert(
             `Please enter SGPA for Semester ${semester}`
             );
-
             return;
-
         }
+
+        semesterData.push({
+            semester: semester,
+            status: "Passed",
+            sgpa: sgpa.value
+        });
 
     }
 
-    if(status.value === "atkt"){
+    else if(status.value === "atkt"){
 
-        const subjects =
+        const cards =
         container.querySelectorAll(
         ".atkt-card"
         );
 
-        for(const card of subjects){
+        if(cards.length === 0){
+            alert(
+            `Please enter ATKT details for Semester ${semester}`
+            );
+            return;
+        }
+
+        const atktSubjects = [];
+
+        for(const card of cards){
 
             const selects =
-            card.querySelectorAll(
-            "select"
-            );
+            card.querySelectorAll("select");
 
             const inputs =
-            card.querySelectorAll(
-            "input"
-            );
+            card.querySelectorAll("input");
 
-            if(
-                selects[0].value === ""
-            ){
+            const subject =
+            selects[0].value;
 
+            const attempt =
+            selects[1].value;
+
+            const previousMarks =
+            inputs[0].value;
+
+            const currentMarks =
+            inputs[1].value;
+
+            const currentStatus =
+            selects[2].value;
+
+            if(subject === ""){
                 alert(
-                `Select ATKT Subject in Semester ${semester}`
+                `Please select subject in Semester ${semester}`
                 );
-
                 return;
-
             }
 
-            if(
-                inputs[0].value === ""
-            ){
-
+            if(previousMarks === ""){
                 alert(
-                `Enter Previous Marks in Semester ${semester}`
+                `Please enter Previous Marks in Semester ${semester}`
                 );
-
                 return;
-
             }
 
-            if(
-                inputs[1].value === ""
-            ){
-
+            if(currentMarks === ""){
                 alert(
-                `Enter Current Marks in Semester ${semester}`
+                `Please enter Current Marks in Semester ${semester}`
                 );
-
                 return;
-
             }
+
+            atktSubjects.push({
+                subject,
+                attempt,
+                previousMarks,
+                currentMarks,
+                currentStatus
+            });
 
         }
+
+        semesterData.push({
+            semester: semester,
+            status: "ATKT",
+            subjects: atktSubjects
+        });
 
     }
 
@@ -473,14 +458,16 @@ const data = {
 
     studentMobile: studentMobile,
 
-    parentMobile: parentMobile
+    parentMobile: parentMobile,
+
+    semesters: semesterData
 
 };
 
 try {
 
     const response = await fetch(
-   "https://script.google.com/macros/s/AKfycbyrGFZ31tcnvyyh4jxVNGaYQoG6wVMlJFTrSLwPdKCTgL2sxwxQJspR27qROnYRduve/exec",
+    "https://script.google.com/macros/s/AKfycbyrGFZ31tcnvyyh4jxVNGaYQoG6wVMlJFTrSLwPdKCTgL2sxwxQJspR27qROnYRduve/exec",
     {
         method: "POST",
         body: JSON.stringify(data)
@@ -488,16 +475,24 @@ try {
 
     console.log("Response:", response);
 
-    alert("Academic Record Submitted Successfully!");
+    alert(
+    "Academic Record Submitted Successfully!"
+    );
 
 }
-catch(error) {
+catch(error){
 
-    console.error("FETCH ERROR:", error);
+    console.error(
+    "FETCH ERROR:",
+    error
+    );
 
-    alert("Error: " + error);
+    alert(
+    "Error: " + error
+    );
 
 }
+
 console.log(data);
 
 }
