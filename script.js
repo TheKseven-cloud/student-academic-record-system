@@ -496,3 +496,45 @@ catch(error){
 console.log(data);
 
 }
+console.log(data);
+
+}
+
+/* PARTICLES */
+
+const particleContainer =
+document.getElementById(
+"particles"
+);
+
+for(let i=0;i<40;i++){
+
+const particle =
+document.createElement(
+"div"
+);
+
+particle.classList.add(
+"particle"
+);
+
+particle.style.left =
+Math.random()*100+"%";
+
+particle.style.width =
+Math.random()*8+3+"px";
+
+particle.style.height =
+particle.style.width;
+
+particle.style.animationDuration =
+(Math.random()*15+10)+"s";
+
+particle.style.animationDelay =
+(Math.random()*10)+"s";
+
+particleContainer.appendChild(
+particle
+);
+
+}
