@@ -1,31 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Manrope',sans-serif;
+font-family:'Plus Jakarta Sans',sans-serif;
 }
 
 :root{
 
---bg:#f5f7fb;
+--bg:#faf8f5;
 
 --card:#ffffff;
 
---primary:#2563eb;
+--text:#111827;
 
---primary-dark:#1d4ed8;
+--muted:#6b7280;
 
---text:#0f172a;
+--border:#ececec;
 
---muted:#64748b;
+--blue:#60a5fa;
 
---border:#e2e8f0;
+--purple:#c084fc;
 
---success:#10b981;
+--pink:#f9a8d4;
 
---warning:#f59e0b;
+--yellow:#fde68a;
+
+--green:#86efac;
 
 }
 
@@ -33,17 +35,17 @@ body{
 
 background:var(--bg);
 
-min-height:100vh;
-
 padding:50px 20px;
-
-position:relative;
 
 overflow-x:hidden;
 
+position:relative;
+
+min-height:100vh;
+
 }
 
-/* Background Decorations */
+/* Decorative blobs */
 
 body::before{
 
@@ -51,23 +53,21 @@ content:"";
 
 position:fixed;
 
-width:500px;
-height:500px;
+width:400px;
+height:400px;
 
-background:#93c5fd;
+background:var(--pink);
 
 border-radius:50%;
 
-filter:blur(180px);
+filter:blur(140px);
 
-top:-250px;
-right:-150px;
+opacity:.25;
 
-opacity:.4;
+top:-150px;
+left:-100px;
 
-z-index:-1;
-
-animation:float1 10s ease-in-out infinite;
+pointer-events:none;
 
 }
 
@@ -80,121 +80,66 @@ position:fixed;
 width:400px;
 height:400px;
 
-background:#c4b5fd;
+background:var(--blue);
 
 border-radius:50%;
 
-filter:blur(180px);
+filter:blur(140px);
+
+opacity:.25;
 
 bottom:-150px;
-left:-100px;
+right:-100px;
 
-opacity:.35;
-
-z-index:-1;
-
-animation:float2 12s ease-in-out infinite;
-
-}
-
-@keyframes float1{
-
-0%,100%{
-transform:translateY(0);
-}
-
-50%{
-transform:translateY(40px);
-}
-
-}
-
-@keyframes float2{
-
-0%,100%{
-transform:translateY(0);
-}
-
-50%{
-transform:translateY(-40px);
-}
+pointer-events:none;
 
 }
 
 .container{
 
-max-width:1200px;
+max-width:1100px;
 
 margin:auto;
 
 }
 
-/* Main Card */
-
 .card{
 
-background:rgba(255,255,255,.75);
+background:transparent;
 
-backdrop-filter:blur(20px);
+padding:0;
 
-border:1px solid rgba(255,255,255,.5);
-
-border-radius:40px;
-
-padding:50px;
-
-box-shadow:
-0 10px 50px rgba(0,0,0,.08);
-
-animation:fadeUp .8s ease;
+box-shadow:none;
 
 }
 
-@keyframes fadeUp{
-
-from{
-
-opacity:0;
-
-transform:
-translateY(30px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:
-translateY(0);
-
-}
-
-}
-
-/* Title */
+/* Hero */
 
 h1{
 
-font-size:58px;
+font-size:64px;
 
 font-weight:800;
 
-line-height:1;
+line-height:.95;
 
 color:var(--text);
 
-margin-bottom:10px;
+margin-bottom:50px;
 
 letter-spacing:-3px;
+
+max-width:700px;
 
 }
 
 h1::after{
 
-content:"Academic Intelligence System";
+content:"Track academic records with style.";
 
 display:block;
+
+margin-top:20px;
 
 font-size:18px;
 
@@ -204,11 +149,9 @@ letter-spacing:0;
 
 color:var(--muted);
 
-margin-top:18px;
-
 }
 
-/* Student Section */
+/* Student Info */
 
 section:first-of-type{
 
@@ -216,14 +159,32 @@ background:white;
 
 padding:30px;
 
-border-radius:28px;
+border-radius:32px;
+
+box-shadow:
+0 20px 40px rgba(0,0,0,.05);
+
+margin-bottom:35px;
 
 border:1px solid var(--border);
 
-margin-bottom:30px;
+position:relative;
 
-box-shadow:
-0 8px 25px rgba(0,0,0,.04);
+}
+
+section:first-of-type::before{
+
+content:"👤 Student Information";
+
+display:block;
+
+font-size:20px;
+
+font-weight:700;
+
+margin-bottom:20px;
+
+color:var(--text);
 
 }
 
@@ -235,93 +196,77 @@ background:white;
 
 padding:28px;
 
-border-radius:24px;
+border-radius:28px;
+
+margin-top:28px;
 
 border:1px solid var(--border);
 
-margin-top:25px;
+box-shadow:
+0 10px 25px rgba(0,0,0,.04);
+
+transition:.35s;
 
 position:relative;
 
-overflow:hidden;
+}
 
-transition:.3s;
+.semester-card:nth-of-type(2){
 
-box-shadow:
-0 4px 15px rgba(0,0,0,.03);
+transform:rotate(-1deg);
+
+background:#eff6ff;
 
 }
 
-.semester-card::before{
+.semester-card:nth-of-type(3){
 
-content:"";
+transform:rotate(1deg);
 
-position:absolute;
+background:#fdf4ff;
 
-top:0;
-left:0;
+}
 
-width:100%;
-height:4px;
+.semester-card:nth-of-type(4){
 
-background:
-linear-gradient(
-90deg,
-#2563eb,
-#8b5cf6
-);
+transform:rotate(-1deg);
+
+background:#fffbeb;
+
+}
+
+.semester-card:nth-of-type(5){
+
+transform:rotate(1deg);
+
+background:#f0fdf4;
 
 }
 
 .semester-card:hover{
 
 transform:
-translateY(-6px);
+translateY(-8px)
+rotate(0deg);
 
 box-shadow:
-0 20px 40px rgba(0,0,0,.08);
+0 25px 50px rgba(0,0,0,.08);
 
 }
 
-.semester-card:nth-of-type(2)::before{
-
-background:#3b82f6;
-
-}
-
-.semester-card:nth-of-type(3)::before{
-
-background:#10b981;
-
-}
-
-.semester-card:nth-of-type(4)::before{
-
-background:#f59e0b;
-
-}
-
-.semester-card:nth-of-type(5)::before{
-
-background:#ec4899;
-
-}
-
-/* Headings */
-
-h2{
+.semester-card h2{
 
 font-size:24px;
 
-font-weight:700;
-
-margin-bottom:20px;
+font-weight:800;
 
 color:var(--text);
 
+margin-bottom:20px;
+
 }
 
-/* Form */
+/* Inputs */
 
 .form-group{
 
@@ -333,13 +278,13 @@ label{
 
 display:block;
 
-margin-bottom:8px;
-
 font-size:14px;
 
 font-weight:700;
 
-color:var(--muted);
+margin-bottom:8px;
+
+color:var(--text);
 
 }
 
@@ -350,9 +295,9 @@ width:100%;
 
 padding:16px;
 
-border-radius:14px;
+border-radius:16px;
 
-border:1px solid var(--border);
+border:2px solid transparent;
 
 background:white;
 
@@ -362,22 +307,15 @@ transition:.25s;
 
 }
 
-input:hover,
-select:hover{
-
-border-color:#cbd5e1;
-
-}
-
 input:focus,
 select:focus{
 
 outline:none;
 
-border-color:var(--primary);
+border-color:var(--blue);
 
 box-shadow:
-0 0 0 5px rgba(37,99,235,.12);
+0 8px 25px rgba(96,165,250,.25);
 
 }
 
@@ -385,38 +323,21 @@ box-shadow:
 
 .atkt-card{
 
-background:#fffaf0;
+background:white;
 
-border:1px solid #fde68a;
-
-border-radius:18px;
+border-radius:20px;
 
 padding:20px;
 
 margin-bottom:15px;
 
-position:relative;
-
-}
-
-.atkt-card::after{
-
-content:"⚠";
-
-position:absolute;
-
-right:15px;
-top:15px;
-
-font-size:18px;
-
-opacity:.4;
+border:2px dashed #f59e0b;
 
 }
 
 .atkt-card h3{
 
-color:#b45309;
+color:#d97706;
 
 margin-bottom:15px;
 
@@ -428,9 +349,9 @@ padding:14px 20px;
 
 border:none;
 
-border-radius:14px;
+border-radius:16px;
 
-background:var(--success);
+background:#10b981;
 
 color:white;
 
@@ -444,10 +365,7 @@ transition:.25s;
 
 .atkt-wrapper button:hover{
 
-transform:
-translateY(-2px);
-
-filter:brightness(1.05);
+transform:translateY(-3px);
 
 }
 
@@ -457,22 +375,13 @@ filter:brightness(1.05);
 
 width:100%;
 
-padding:22px;
-
 margin-top:35px;
+
+padding:22px;
 
 border:none;
 
-border-radius:18px;
-
-background:
-linear-gradient(
-135deg,
-#2563eb,
-#8b5cf6
-);
-
-color:white;
+border-radius:24px;
 
 font-size:18px;
 
@@ -480,51 +389,27 @@ font-weight:800;
 
 cursor:pointer;
 
-transition:.35s;
-
-position:relative;
-
-overflow:hidden;
-
-}
-
-#submitBtn::before{
-
-content:"";
-
-position:absolute;
-
-top:0;
-left:-120%;
-
-width:100%;
-height:100%;
+color:white;
 
 background:
 linear-gradient(
-90deg,
-transparent,
-rgba(255,255,255,.25),
-transparent
+135deg,
+#60a5fa,
+#c084fc
 );
 
-transition:.8s;
+box-shadow:
+0 15px 35px rgba(96,165,250,.25);
 
-}
-
-#submitBtn:hover::before{
-
-left:120%;
+transition:.3s;
 
 }
 
 #submitBtn:hover{
 
 transform:
-translateY(-3px);
-
-box-shadow:
-0 20px 40px rgba(37,99,235,.25);
+translateY(-4px)
+scale(1.01);
 
 }
 
@@ -536,18 +421,12 @@ width:10px;
 
 }
 
-::-webkit-scrollbar-track{
-
-background:#e5e7eb;
-
-}
-
 ::-webkit-scrollbar-thumb{
 
 background:
 linear-gradient(
-#2563eb,
-#8b5cf6
+#60a5fa,
+#c084fc
 );
 
 border-radius:20px;
@@ -558,23 +437,18 @@ border-radius:20px;
 
 @media(max-width:768px){
 
-.card{
-
-padding:25px;
-
-}
-
 h1{
 
-font-size:38px;
+font-size:42px;
 
 letter-spacing:-2px;
 
 }
 
-h2{
+section:first-of-type,
+.semester-card{
 
-font-size:20px;
+padding:20px;
 
 }
 
