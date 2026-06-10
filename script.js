@@ -266,7 +266,7 @@ document
 submitForm
 );
 
-async function async function submitForm() {
+async function submitForm() {
 
 const submitBtn =
 document.getElementById("submitBtn");
