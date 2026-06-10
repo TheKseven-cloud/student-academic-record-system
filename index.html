@@ -1,152 +1,300 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<title>Student Academic Record System</title>
+
+<title>Student Academic Portal</title>
+
 <link rel="stylesheet" href="style.css">
-</head><body><div class="container"><div class="card">
 
-    <h1>Student Results Div-B</h1>
+</head>
 
-    <!-- STUDENT DETAILS -->
+<body>
 
-    <section>
+<div class="container">
 
-        <h2>Student Information</h2>
+    <!-- HERO -->
 
-        <div class="form-group">
-            <label>Student Name</label>
-            <input type="text" id="studentName" required>
-        </div>
+    <div class="hero">
 
-        <div class="form-group">
-            <label>Roll Number</label>
-            <input type="number" id="rollNumber" required>
-        </div>
+        <div class="hero-content">
 
-        <div class="form-group">
-            <label>Student Mobile Number</label>
-            <input type="tel" id="studentMobile">
-        </div>
+            <span class="hero-badge">
+                Academic Intelligence System
+            </span>
 
-        <div class="form-group">
-            <label>Parent Mobile Number</label>
-            <input type="tel" id="parentMobile">
-        </div>
+            <h1>
+                Student Academic Portal
+            </h1>
 
-    </section>
-
-    <!-- SEMESTER 1 -->
-
-    <section class="semester-card">
-
-        <h2>Semester 1</h2>
-
-        <div class="form-group">
-
-            <label>Result Status</label>
-
-            <select class="result-status" data-semester="1">
-
-                <option value="">Select Status</option>
-
-                <option value="pass">Passed</option>
-
-                <option value="atkt">ATKT</option>
-
-            </select>
+            <p>
+                Manage semester records, SGPA and ATKT information
+                from a single dashboard.
+            </p>
 
         </div>
 
-        <div id="semester1Container"></div>
+    </div>
 
-    </section>
+    <!-- MAIN DASHBOARD -->
 
-    <!-- SEMESTER 2 -->
+    <div class="dashboard">
 
-    <section class="semester-card">
+        <!-- STUDENT PROFILE -->
 
-        <h2>Semester 2</h2>
+        <section class="profile-card">
 
-        <div class="form-group">
+            <div class="section-header">
 
-            <label>Result Status</label>
+                <h2>
+                    Student Information
+                </h2>
 
-            <select class="result-status" data-semester="2">
+            </div>
 
-                <option value="">Select Status</option>
+            <div class="profile-grid">
 
-                <option value="pass">Passed</option>
+                <div class="form-group">
 
-                <option value="atkt">ATKT</option>
+                    <label>
+                        Student Name
+                    </label>
 
-            </select>
+                    <input
+                    type="text"
+                    id="studentName">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+                        Roll Number
+                    </label>
+
+                    <input
+                    type="number"
+                    id="rollNumber">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+                        Student Mobile Number
+                    </label>
+
+                    <input
+                    type="tel"
+                    id="studentMobile">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+                        Parent Mobile Number
+                    </label>
+
+                    <input
+                    type="tel"
+                    id="parentMobile">
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- SEMESTERS -->
+
+        <div class="semester-grid">
+
+            <!-- SEM 1 -->
+
+            <section class="semester-card">
+
+                <h2>
+                    Semester 1
+                </h2>
+
+                <div class="form-group">
+
+                    <label>
+                        Result Status
+                    </label>
+
+                    <select
+                    class="result-status"
+                    data-semester="1">
+
+                        <option value="">
+                            Select Status
+                        </option>
+
+                        <option value="pass">
+                            Passed
+                        </option>
+
+                        <option value="atkt">
+                            ATKT
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div
+                id="semester1Container">
+                </div>
+
+            </section>
+
+            <!-- SEM 2 -->
+
+            <section class="semester-card">
+
+                <h2>
+                    Semester 2
+                </h2>
+
+                <div class="form-group">
+
+                    <label>
+                        Result Status
+                    </label>
+
+                    <select
+                    class="result-status"
+                    data-semester="2">
+
+                        <option value="">
+                            Select Status
+                        </option>
+
+                        <option value="pass">
+                            Passed
+                        </option>
+
+                        <option value="atkt">
+                            ATKT
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div
+                id="semester2Container">
+                </div>
+
+            </section>
+
+            <!-- SEM 3 -->
+
+            <section class="semester-card">
+
+                <h2>
+                    Semester 3
+                </h2>
+
+                <div class="form-group">
+
+                    <label>
+                        Result Status
+                    </label>
+
+                    <select
+                    class="result-status"
+                    data-semester="3">
+
+                        <option value="">
+                            Select Status
+                        </option>
+
+                        <option value="pass">
+                            Passed
+                        </option>
+
+                        <option value="atkt">
+                            ATKT
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div
+                id="semester3Container">
+                </div>
+
+            </section>
+
+            <!-- SEM 4 -->
+
+            <section class="semester-card">
+
+                <h2>
+                    Semester 4
+                </h2>
+
+                <div class="form-group">
+
+                    <label>
+                        Result Status
+                    </label>
+
+                    <select
+                    class="result-status"
+                    data-semester="4">
+
+                        <option value="">
+                            Select Status
+                        </option>
+
+                        <option value="pass">
+                            Passed
+                        </option>
+
+                        <option value="atkt">
+                            ATKT
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div
+                id="semester4Container">
+                </div>
+
+            </section>
 
         </div>
 
-        <div id="semester2Container"></div>
+        <!-- SUBMIT -->
 
-    </section>
+        <div class="submit-section">
 
-    <!-- SEMESTER 3 -->
+            <button
+            id="submitBtn">
 
-    <section class="semester-card">
+                Submit Academic Record
 
-        <h2>Semester 3</h2>
-
-        <div class="form-group">
-
-            <label>Result Status</label>
-
-            <select class="result-status" data-semester="3">
-
-                <option value="">Select Status</option>
-
-                <option value="pass">Passed</option>
-
-                <option value="atkt">ATKT</option>
-
-            </select>
+            </button>
 
         </div>
 
-        <div id="semester3Container"></div>
-
-    </section>
-
-    <!-- SEMESTER 4 -->
-
-    <section class="semester-card">
-
-        <h2>Semester 4</h2>
-
-        <div class="form-group">
-
-            <label>Result Status</label>
-
-            <select class="result-status" data-semester="4">
-
-                <option value="">Select Status</option>
-
-                <option value="pass">Passed</option>
-
-                <option value="atkt">ATKT</option>
-
-            </select>
-
-        </div>
-
-        <div id="semester4Container"></div>
-
-    </section>
-
-    <button id="submitBtn">
-        Submit Academic Record
-    </button>
+    </div>
 
 </div>
 
-</div><script src="script.js"></script></body>
-</html>+
+<script src="script.js"></script>
+
+</body>
+
+</html>
