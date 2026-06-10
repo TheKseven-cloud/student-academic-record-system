@@ -1,51 +1,50 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Plus Jakarta Sans',sans-serif;
+font-family:'Manrope',sans-serif;
 }
 
 :root{
 
---bg:#faf8f5;
+--primary:#4f46e5;
+--secondary:#7c3aed;
+
+--success:#10b981;
+--warning:#f59e0b;
+
+--text:#111827;
+--muted:#6b7280;
 
 --card:#ffffff;
 
---text:#111827;
+--border:#e5e7eb;
 
---muted:#6b7280;
-
---border:#ececec;
-
---blue:#60a5fa;
-
---purple:#c084fc;
-
---pink:#f9a8d4;
-
---yellow:#fde68a;
-
---green:#86efac;
+--bg:#f8fafc;
 
 }
 
 body{
 
-background:var(--bg);
-
-padding:50px 20px;
-
-overflow-x:hidden;
-
-position:relative;
+background:
+linear-gradient(
+135deg,
+#eef2ff 0%,
+#f8fafc 40%,
+#ecfeff 100%
+);
 
 min-height:100vh;
 
+padding:40px 20px;
+
+overflow-x:hidden;
+
 }
 
-/* Decorative blobs */
+/* Animated background blobs */
 
 body::before{
 
@@ -53,19 +52,21 @@ content:"";
 
 position:fixed;
 
-width:400px;
-height:400px;
+width:500px;
+height:500px;
 
-background:var(--pink);
+background:#818cf8;
 
 border-radius:50%;
 
-filter:blur(140px);
+filter:blur(160px);
 
 opacity:.25;
 
-top:-150px;
-left:-100px;
+top:-200px;
+left:-200px;
+
+animation:blob1 14s ease infinite;
 
 pointer-events:none;
 
@@ -77,177 +78,286 @@ content:"";
 
 position:fixed;
 
-width:400px;
-height:400px;
+width:450px;
+height:450px;
 
-background:var(--blue);
+background:#67e8f9;
 
 border-radius:50%;
 
-filter:blur(140px);
+filter:blur(160px);
 
-opacity:.25;
+opacity:.20;
 
 bottom:-150px;
-right:-100px;
+right:-150px;
+
+animation:blob2 16s ease infinite;
 
 pointer-events:none;
 
 }
 
+@keyframes blob1{
+
+0%,100%{
+transform:translate(0,0);
+}
+
+50%{
+transform:translate(80px,40px);
+}
+
+}
+
+@keyframes blob2{
+
+0%,100%{
+transform:translate(0,0);
+}
+
+50%{
+transform:translate(-70px,-40px);
+}
+
+}
+
 .container{
 
-max-width:1100px;
+max-width:1300px;
 
 margin:auto;
 
-}
+position:relative;
 
-.card{
-
-background:transparent;
-
-padding:0;
-
-box-shadow:none;
+z-index:2;
 
 }
 
-/* Hero */
+/* HERO */
 
-h1{
+.hero{
+
+margin-bottom:40px;
+
+animation:fadeUp .8s ease;
+
+}
+
+.hero-badge{
+
+display:inline-block;
+
+padding:10px 18px;
+
+border-radius:999px;
+
+background:white;
+
+border:1px solid rgba(79,70,229,.15);
+
+font-size:13px;
+
+font-weight:700;
+
+color:var(--primary);
+
+margin-bottom:20px;
+
+box-shadow:
+0 8px 20px rgba(79,70,229,.08);
+
+}
+
+.hero h1{
 
 font-size:64px;
 
 font-weight:800;
 
-line-height:.95;
-
-color:var(--text);
-
-margin-bottom:50px;
+line-height:1;
 
 letter-spacing:-3px;
 
-max-width:700px;
+color:var(--text);
+
+margin-bottom:15px;
 
 }
 
-h1::after{
-
-content:"Track academic records with style.";
-
-display:block;
-
-margin-top:20px;
+.hero p{
 
 font-size:18px;
 
-font-weight:500;
-
-letter-spacing:0;
+max-width:700px;
 
 color:var(--muted);
 
+line-height:1.7;
+
 }
 
-/* Student Info */
+/* DASHBOARD */
 
-section:first-of-type{
+.dashboard{
+
+display:flex;
+
+flex-direction:column;
+
+gap:30px;
+
+}
+
+/* PROFILE CARD */
+
+.profile-card{
 
 background:white;
 
-padding:30px;
-
 border-radius:32px;
 
-box-shadow:
-0 20px 40px rgba(0,0,0,.05);
-
-margin-bottom:35px;
+padding:35px;
 
 border:1px solid var(--border);
 
-position:relative;
+box-shadow:
+0 15px 40px rgba(0,0,0,.05);
+
+animation:fadeUp .9s ease;
 
 }
 
-section:first-of-type::before{
+.section-header h2{
 
-content:"👤 Student Information";
+font-size:24px;
 
-display:block;
+font-weight:800;
 
-font-size:20px;
-
-font-weight:700;
-
-margin-bottom:20px;
+margin-bottom:25px;
 
 color:var(--text);
 
 }
 
-/* Semester Cards */
+.profile-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(250px,1fr));
+
+gap:20px;
+
+}
+
+/* SEMESTER GRID */
+
+.semester-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(2,1fr);
+
+gap:24px;
+
+}
+
+/* CARDS */
 
 .semester-card{
 
 background:white;
 
-padding:28px;
-
 border-radius:28px;
 
-margin-top:28px;
+padding:28px;
 
 border:1px solid var(--border);
 
-box-shadow:
-0 10px 25px rgba(0,0,0,.04);
+position:relative;
+
+overflow:hidden;
 
 transition:.35s;
 
-position:relative;
+box-shadow:
+0 12px 30px rgba(0,0,0,.04);
+
+animation:fadeUp 1s ease;
 
 }
 
-.semester-card:nth-of-type(2){
+.semester-card:nth-child(1){
 
-transform:rotate(-1deg);
-
-background:#eff6ff;
-
-}
-
-.semester-card:nth-of-type(3){
-
-transform:rotate(1deg);
-
-background:#fdf4ff;
+background:
+linear-gradient(
+135deg,
+#eef2ff,
+white
+);
 
 }
 
-.semester-card:nth-of-type(4){
+.semester-card:nth-child(2){
 
-transform:rotate(-1deg);
-
-background:#fffbeb;
+background:
+linear-gradient(
+135deg,
+#ecfeff,
+white
+);
 
 }
 
-.semester-card:nth-of-type(5){
+.semester-card:nth-child(3){
 
-transform:rotate(1deg);
+background:
+linear-gradient(
+135deg,
+#f5f3ff,
+white
+);
 
-background:#f0fdf4;
+}
+
+.semester-card:nth-child(4){
+
+background:
+linear-gradient(
+135deg,
+#f0fdf4,
+white
+);
+
+}
+
+.semester-card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:0;
+
+width:100%;
+height:5px;
+
+background:
+linear-gradient(
+90deg,
+var(--primary),
+var(--secondary)
+);
 
 }
 
 .semester-card:hover{
 
 transform:
-translateY(-8px)
-rotate(0deg);
+translateY(-10px);
 
 box-shadow:
 0 25px 50px rgba(0,0,0,.08);
@@ -256,7 +366,7 @@ box-shadow:
 
 .semester-card h2{
 
-font-size:24px;
+font-size:22px;
 
 font-weight:800;
 
@@ -266,7 +376,7 @@ margin-bottom:20px;
 
 }
 
-/* Inputs */
+/* FORMS */
 
 .form-group{
 
@@ -278,11 +388,11 @@ label{
 
 display:block;
 
+margin-bottom:8px;
+
 font-size:14px;
 
 font-weight:700;
-
-margin-bottom:8px;
 
 color:var(--text);
 
@@ -293,7 +403,7 @@ select{
 
 width:100%;
 
-padding:16px;
+padding:15px 16px;
 
 border-radius:16px;
 
@@ -305,6 +415,17 @@ font-size:15px;
 
 transition:.25s;
 
+box-shadow:
+0 0 0 1px var(--border);
+
+}
+
+input:hover,
+select:hover{
+
+box-shadow:
+0 0 0 1px #cbd5e1;
+
 }
 
 input:focus,
@@ -312,10 +433,10 @@ select:focus{
 
 outline:none;
 
-border-color:var(--blue);
+border-color:rgba(79,70,229,.15);
 
 box-shadow:
-0 8px 25px rgba(96,165,250,.25);
+0 0 0 5px rgba(79,70,229,.12);
 
 }
 
@@ -333,11 +454,28 @@ margin-bottom:15px;
 
 border:2px dashed #f59e0b;
 
+position:relative;
+
+}
+
+.atkt-card::after{
+
+content:"⚠";
+
+position:absolute;
+
+right:15px;
+top:15px;
+
+font-size:18px;
+
+opacity:.5;
+
 }
 
 .atkt-card h3{
 
-color:#d97706;
+color:#b45309;
 
 margin-bottom:15px;
 
@@ -345,13 +483,18 @@ margin-bottom:15px;
 
 .atkt-wrapper button{
 
-padding:14px 20px;
+padding:14px 18px;
 
 border:none;
 
-border-radius:16px;
+border-radius:14px;
 
-background:#10b981;
+background:
+linear-gradient(
+135deg,
+#10b981,
+#34d399
+);
 
 color:white;
 
@@ -365,79 +508,125 @@ transition:.25s;
 
 .atkt-wrapper button:hover{
 
-transform:translateY(-3px);
+transform:translateY(-2px);
 
 }
 
-/* Submit */
+/* SUBMIT */
+
+.submit-section{
+
+margin-top:10px;
+
+}
 
 #submitBtn{
 
 width:100%;
 
-margin-top:35px;
-
 padding:22px;
 
 border:none;
 
-border-radius:24px;
+border-radius:22px;
 
 font-size:18px;
 
 font-weight:800;
 
-cursor:pointer;
-
 color:white;
+
+cursor:pointer;
 
 background:
 linear-gradient(
 135deg,
-#60a5fa,
-#c084fc
+#4f46e5,
+#7c3aed
 );
 
 box-shadow:
-0 15px 35px rgba(96,165,250,.25);
+0 15px 35px rgba(79,70,229,.25);
 
 transition:.3s;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+#submitBtn::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:-120%;
+
+width:100%;
+height:100%;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.3),
+transparent
+);
+
+transition:.8s;
+
+}
+
+#submitBtn:hover::before{
+
+left:120%;
 
 }
 
 #submitBtn:hover{
 
+transform:translateY(-3px);
+
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
 transform:
-translateY(-4px)
-scale(1.01);
+translateY(40px);
 
 }
 
-/* Scrollbar */
+to{
 
-::-webkit-scrollbar{
+opacity:1;
 
-width:10px;
-
-}
-
-::-webkit-scrollbar-thumb{
-
-background:
-linear-gradient(
-#60a5fa,
-#c084fc
-);
-
-border-radius:20px;
+transform:
+translateY(0);
 
 }
 
-/* Mobile */
+}
 
-@media(max-width:768px){
+/* MOBILE */
 
-h1{
+@media(max-width:900px){
+
+.semester-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.hero h1{
 
 font-size:42px;
 
@@ -445,10 +634,31 @@ letter-spacing:-2px;
 
 }
 
-section:first-of-type,
-.semester-card{
+.profile-card{
 
-padding:20px;
+padding:25px;
+
+}
+
+}
+
+@media(max-width:600px){
+
+body{
+
+padding:20px 10px;
+
+}
+
+.hero h1{
+
+font-size:34px;
+
+}
+
+.hero p{
+
+font-size:15px;
 
 }
 
