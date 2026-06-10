@@ -495,24 +495,22 @@ catch(error){
 
 console.log(data);
 
-}
-console.log(data);
-
-}
-
 /* PARTICLES */
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
 
 const particleContainer =
 document.getElementById(
 "particles"
 );
 
+if(!particleContainer) return;
+
 for(let i=0;i<40;i++){
 
 const particle =
-document.createElement(
-"div"
-);
+document.createElement("div");
 
 particle.classList.add(
 "particle"
@@ -538,3 +536,5 @@ particle
 );
 
 }
+
+});
