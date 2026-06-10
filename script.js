@@ -368,7 +368,7 @@ const data = {
 
     parentMobile: parentMobile
 
-};
+}
 
 try {
 
