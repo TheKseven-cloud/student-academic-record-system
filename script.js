@@ -277,6 +277,12 @@ const rollNumber =
 document.getElementById(
 "rollNumber"
 ).value.trim();
+    if (!/^\d{5}$/.test(rollNumber)) {
+    alert("Please enter exactly 5 digits");
+    return;
+}
+
+const enrollmentNo = "24BCA" + rollNumber;
 
 const studentMobile =
 document.getElementById(
