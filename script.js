@@ -477,19 +477,37 @@ const data = {
 
 };
 
+const submitBtn =
+document.getElementById("submitBtn");
+
+submitBtn.disabled = true;
+submitBtn.textContent = "Submitting...";
+
 try {
 
     const response = await fetch(
-    "https://script.google.com/macros/s/AKfycbyrGFZ31tcnvyyh4jxVNGaYQoG6wVMlJFTrSLwPdKCTgL2sxwxQJspR27qROnYRduve/exec",
-    {
-        method: "POST",
-        body: JSON.stringify(data)
-    });
+        "YOUR_WEBAPP_URL",
+        {
+            method: "POST",
+            body: JSON.stringify(data)
+        }
+    );
 
-    console.log("Response:", response);
+    submitBtn.textContent = "Submitted Successfully ✅";
+
+    setTimeout(() => {
+        submitBtn.textContent = "Submit Record";
+        submitBtn.disabled = false;
+    }, 3000);
+
+}
+catch(error){
+
+    submitBtn.textContent = "Submission Failed ❌";
+    submitBtn.disabled = false;
 
     alert(
-    "Academic Record Submitted Successfully!"
+        "Error: " + error
     );
 
 }
