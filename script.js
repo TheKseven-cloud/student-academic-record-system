@@ -511,18 +511,6 @@ catch(error){
     );
 
 }
-catch(error){
-
-    console.error(
-    "FETCH ERROR:",
-    error
-    );
-
-    alert(
-    "Error: " + error
-    );
-
-}
 
 console.log(data);
 
