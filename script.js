@@ -460,7 +460,7 @@ const data = {
 
     name: studentName,
 
-    roll: rollNumber,
+    roll: enrollmentNo,
 
     studentMobile: studentMobile,
 
