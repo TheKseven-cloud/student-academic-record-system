@@ -486,7 +486,7 @@ submitBtn.textContent = "Submitting...";
 try {
 
     const response = await fetch(
-        "YOUR_WEBAPP_URL",
+        "https://script.google.com/macros/s/AKfycbyrGFZ31tcnvyyh4jxVNGaYQoG6wVMlJFTrSLwPdKCTgL2sxwxQJspR27qROnYRduve/exec",
         {
             method: "POST",
             body: JSON.stringify(data)
