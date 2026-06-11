@@ -358,6 +358,13 @@ for(const status of statuses){
         'input[type="number"]'
         );
 
+        const sgpaValue = parseFloat(sgpa.value);
+
+if (sgpaValue < 0 || sgpaValue > 10) {
+    alert(`SGPA for Semester ${semester} must be between 0 and 10`);
+    return;
+}
+
         if(
             !sgpa ||
             sgpa.value.trim() === ""
