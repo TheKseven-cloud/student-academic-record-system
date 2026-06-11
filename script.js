@@ -300,12 +300,12 @@ if(studentName === ""){
 }
 
 if(rollNumber === ""){
-    alert("Please enter Roll Number.");
+    alert("Please enter Enrollment Number.");
     return;
 }
 
 if(!/^\d+$/.test(rollNumber)){
-    alert("Roll Number must contain numbers only.");
+    alert("Roll Number must contain 5 digits only.");
     return;
 }
 
