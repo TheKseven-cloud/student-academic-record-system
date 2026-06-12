@@ -596,3 +596,44 @@ select option {
     background: var(--card) !important;
     border: 1px solid var(--border) !important;
 }
+
+/* =========================================
+   ULTIMATE PREMIUM GLASS UPGRADE
+   ========================================= */
+
+/* 1. Pull the bubbles completely into the background */
+.orb {
+    z-index: 0 !important; /* Brings them in front of the flat background color */
+}
+
+/* 2. Push all the content above the bubbles */
+.glass-nav, .dashboard-container, .container {
+    position: relative;
+    z-index: 10 !important; 
+}
+
+/* 3. Apply the Premium Glass effect to EVERY card on the page */
+.glass-card, .semester-card, .profile-card, .hero {
+    background: var(--card) !important;
+    backdrop-filter: blur(25px) !important; /* The liquid glass blur */
+    -webkit-backdrop-filter: blur(25px) !important;
+    border: 1px solid var(--border) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05) !important;
+    border-radius: 24px !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 4. Fix Light Mode Header Readability (Deep Navy & Ocean Blue) */
+[data-theme="light"] .glass-nav h2 {
+    background: linear-gradient(135deg, #1e3a8a, #0284c7) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* 5. Keep Dark Mode Header Bright (Cyan & Purple) */
+[data-theme="dark"] .glass-nav h2 {
+    background: linear-gradient(135deg, #00d2ff, #e0aaff) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
