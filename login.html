@@ -25,7 +25,7 @@
         <form id="loginForm">
             <div class="input-group">
                 <label id="username-label" for="username">Enrollment Number</label>
-                <input type="text" id="username" placeholder="e.g., 24BCA53101" required>
+                <input type="text" id="username" placeholder="e.g., 24BCA00001" required>
             </div>
             
             <div class="input-group">
@@ -121,7 +121,7 @@
             // Simulated backend routing
             setTimeout(() => {
                 if (currentRole === 'student') {
-                    window.location.href = "student-dashboard.html"; // Routes to student view
+                    window.location.href = "index.html"; // Routes to student view
                 } else {
                     statusMessage.textContent = "Routing to Master Database..."; // We will build mentor-dashboard.html next
                     statusMessage.className = "success";
