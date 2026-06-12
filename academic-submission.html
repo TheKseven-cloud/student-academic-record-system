@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <script>
-    // Only check for the login key. 
-    // DO NOT check the path. Just verify the session.
-    if (sessionStorage.getItem('isLoggedIn') !== 'true') {
-        window.location.href = 'login.html';
-    }
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submit Academic Records</title>
@@ -24,7 +17,7 @@
         <h2>Academic Portal</h2>
         <div class="nav-controls">
             <button id="themeToggle" class="action-btn secondary theme-btn">🌙 Dark Mode</button>
-            <button onclick="window.location.href='student-dashboard.html'" class="action-btn" style="background: transparent; border: 1px solid var(--primary); color: var(--primary);">
+            <button onclick="window.location.href='index.html'" class="action-btn" style="background: transparent; border: 1px solid var(--primary); color: var(--primary);">
                 ← Back to Dashboard
             </button>
         </div>
