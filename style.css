@@ -269,3 +269,93 @@ select option { background: var(--bg); color: var(--text); }
 
 /* Hide original particle JS dots */
 #particles { display: none; }
+
+/* ==========================================================================
+   PREMIUM GLASS UI - SYNCED WITH DASHBOARD
+   ========================================================================== */
+
+/* 1. Global Sync: This links your form to the theme logic of your dashboard */
+[data-theme="light"] {
+    --bg: #f1f5f9;
+    --glass: rgba(255, 255, 255, 0.7);
+    --text: #1e293b;
+    --border: rgba(0, 0, 0, 0.1);
+    --input-bg: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] {
+    --bg: #0a0a0f;
+    --glass: rgba(255, 255, 255, 0.04);
+    --text: #ffffff;
+    --border: rgba(255, 255, 255, 0.1);
+    --input-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* 2. Glass Component Logic (Matches Dashboard Cards) */
+.hero, .profile-card, .semester-card, .atkt-card {
+    background: var(--glass) !important;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid var(--border) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* 3. Text Readability (Forces theme-aware colors) */
+h1, h2, label, p {
+    color: var(--text) !important;
+}
+
+label { 
+    font-size: 0.75rem; 
+    font-weight: 800; 
+    text-transform: uppercase; 
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+}
+
+/* 4. Form Refinement (The "Non-Rushed" look) */
+input, select {
+    width: 100%;
+    padding: 16px 20px;
+    margin-top: 8px;
+    border-radius: 16px;
+    border: 1px solid var(--border) !important;
+    background: var(--input-bg) !important;
+    color: var(--text) !important;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    border-color: #00d2ff !important;
+    box-shadow: 0 0 0 4px rgba(0, 210, 255, 0.1);
+    outline: none;
+}
+
+/* 5. Submit Button (Glow Effect) */
+#submitBtn {
+    background: linear-gradient(135deg, #00d2ff, #8a2be2);
+    color: white;
+    border: none;
+    padding: 20px;
+    border-radius: 16px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.3s;
+}
+
+#submitBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 210, 255, 0.3);
+}
+
+/* 6. Layout Fix (Preventing Collapse) */
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+.semester-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
