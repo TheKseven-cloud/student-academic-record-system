@@ -1,47 +1,59 @@
+// --- Official Subjects for Semesters 1 to 6 ---
 const semesterSubjects = {
-
-1: [
-    "Programming Fundamentals and Problem Solving",
-    "Internet Technology",
-    "Digital Electronics",
-    "Mathematics for Computer Science",
-    "Communication Skills",
-    "Project Work-I",
-    "Introduction to IKS",
-    "Indian Astronomy-I"
-],
-
-2: [
-    "Programming in C",
-    "Database Management System",
-    "Software Engineering",
-    "Computer Oriented Numerical and Statistical Methods",
-    "Foundation Course in English Language",
-    "Project Work-II",
-    "Environmental Studies"
-],
-
-3: [
-    "Data Structures and Algorithms",
-    "Object Oriented Programming with C++",
-    "Advanced Database Management System",
-    "Probability Theory and Distributions",
-    "Personality Development",
-    "Project Work-III",
-    "Indian Ethos and Ethics",
-    "Indian Astronomy-II"
-],
-
-4: [
-    "Python Programming",
-    "Web Design and Development",
-    "Operating System",
-    "Data Communication and Network",
-    "Business Communication",
-    "Project Work-IV",
-    "Disaster Management"
-]
-
+    1: [
+        "Programming Fundamentals and Problem Solving",
+        "Internet Technology",
+        "Digital Electronics",
+        "Mathematics for Computer Science",
+        "Communication Skills",
+        "Project Work-I",
+        "Introduction to IKS",
+        "Indian Astronomy-I"
+    ],
+    2: [
+        "Programming in C",
+        "Database Management System",
+        "Software Engineering",
+        "Computer Oriented Numerical and Statistical Methods",
+        "Foundation Course in English Language",
+        "Project Work-II",
+        "Environmental Studies"
+    ],
+    3: [
+        "Data Structures and Algorithms",
+        "Object Oriented Programming with C++",
+        "Advanced Database Management System",
+        "Probability Theory and Distributions",
+        "Personality Development",
+        "Project Work-III",
+        "Indian Ethos and Ethics",
+        "Indian Astronomy-II"
+    ],
+    4: [
+        "Python Programming",
+        "Web Design and Development",
+        "Operating System",
+        "Data Communication and Network",
+        "Business Communication",
+        "Project Work-IV",
+        "Disaster Management"
+    ],
+    5: [
+        "Object Oriented Programming using Java",
+        "Next Generation Database",
+        "Software Testing",
+        "Enterprise Resource Planning",
+        "Cyber Security",
+        "Project Work-V"
+    ],
+    6: [
+        "Data Warehousing and Data Mining",
+        "Mobile Application Development",
+        "Network Security",
+        "Digital Marketing Management",
+        "Communication and Soft Skills for Professional Success",
+        "Internship"
+    ]
 };
 
 document.addEventListener("DOMContentLoaded", () => {
