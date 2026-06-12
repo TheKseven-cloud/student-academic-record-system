@@ -42,46 +42,78 @@ body {
     transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition when toggling */
 }
 
-/* ... Keep all your existing .orb CSS here ... */
-
-/* --- AMBIENT HOLLOW BUBBLES --- */
+/* =========================================
+   LIQUID MIRROR BUBBLES
+   ========================================= */
 .orb {
-    position: absolute;
+    position: fixed;
     border-radius: 50%;
-    /* Reduced blur slightly so the hollow shape holds together */
-    filter: blur(35px); 
-    background: transparent; /* Makes the center hollow */
-    z-index: -1; 
-    opacity: 0.85;
+    z-index: -1;
+    /* This creates the liquid 3D glass effect */
+    box-shadow: inset 0 0 60px rgba(255, 255, 255, 0.4), 0 20px 50px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    animation: float 20s infinite alternate ease-in-out;
 }
 
 .orb-1 {
-    width: 350px;
-    height: 350px;
-    border: 40px solid #ff2a85; /* Thick border creates the ring */
-    top: -5%;
-    left: -5%;
-    animation: float 6s infinite alternate ease-in-out;
+    width: 45vw; height: 45vw;
+    top: -15%; left: -10%;
+    background: radial-gradient(circle at 30% 30%, rgba(0, 210, 255, 0.5), rgba(138, 43, 226, 0.1));
 }
 
 .orb-2 {
-    width: 450px;
-    height: 450px;
-    border: 50px solid #8a2be2; 
-    bottom: -15%;
-    right: -5%;
-    animation: float 8s infinite alternate ease-in-out -3s; 
+    width: 40vw; height: 40vw;
+    bottom: -10%; right: -10%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 42, 133, 0.4), rgba(255, 140, 0, 0.1));
+    animation-delay: -5s;
 }
 
 .orb-3 {
-    width: 280px;
-    height: 280px;
-    border: 35px solid #00d2ff; 
-    top: 35%;
-    left: 45%;
-    animation: float 5s infinite alternate ease-in-out -1s;
+    width: 30vw; height: 30vw;
+    top: 35%; left: 45%;
+    background: radial-gradient(circle at 30% 30%, rgba(52, 199, 89, 0.3), rgba(0, 210, 255, 0.1));
+    animation-delay: -10s;
 }
 
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+    50% { transform: translate(40px, -40px) scale(1.05) rotate(15deg); }
+    100% { transform: translate(-20px, 30px) scale(0.95) rotate(-10deg); }
+}
+
+/* =========================================
+   MIRRORY GLASS HEADER
+   ========================================= */
+.glass-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: var(--card);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.glass-nav h2 {
+    /* Gradient text that adapts to the theme */
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-shadow: 0px 4px 15px rgba(0,0,0,0.05);
+}
+
+/* Enhances the header text brightness specifically in Dark Mode */
+[data-theme="dark"] .glass-nav h2 {
+    background: linear-gradient(135deg, #00d2ff, #e0aaff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 /* Animation keyframes */
 @keyframes float {
     0% { transform: translate(0, 0) scale(1); }
