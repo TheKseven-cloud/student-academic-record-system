@@ -637,3 +637,18 @@ select option {
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
 }
+
+/* =========================================
+   INDEX.HTML CONTAINER FIX
+   ========================================= */
+/* This stops the old style.css from hiding the bubbles */
+.container {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* Ensure the body completely surrenders to the new theme */
+body {
+    background-color: var(--bg) !important;
+}
