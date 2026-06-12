@@ -160,5 +160,59 @@
     </div>
 
     <script src="script.js"></script>
+
+    <script>
+        // --- 1. Dark Mode Toggle Logic ---
+        const themeBtn = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Remember the user's preference using LocalStorage
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        body.setAttribute('data-theme', currentTheme);
+        themeBtn.innerHTML = currentTheme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode';
+
+        themeBtn.addEventListener('click', () => {
+            const newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeBtn.innerHTML = newTheme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode';
+        });
+
+        // --- 2. Progression Ring Animation Logic ---
+        function animateRing(ringId, percent) {
+            const circle = document.getElementById(ringId + '-ring');
+            const textElement = document.getElementById(ringId + '-text');
+            
+            if (!circle || !textElement) return;
+
+            const radius = circle.r.baseVal.value;
+            const circumference = radius * 2 * Math.PI;
+
+            circle.style.strokeDasharray = `${circumference} ${circumference}`;
+            circle.style.strokeDashoffset = circumference; 
+
+            setTimeout(() => {
+                const offset = circumference - (percent / 100) * circumference;
+                circle.style.strokeDashoffset = offset;
+                
+                // Number counting up animation
+                let current = 0;
+                const step = Math.ceil(percent / 30);
+                const timer = setInterval(() => {
+                    current += step;
+                    if(current >= percent) {
+                        current = percent;
+                        clearInterval(timer);
+                    }
+                    textElement.innerText = current + "%";
+                }, 30);
+            }, 300);
+        }
+
+        // Trigger the animations (Using placeholder numbers for now)
+        animateRing('syllabus', 75);
+        animateRing('performance', 82);
+        animateRing('attendance', 90);
+    </script>
 </body>
 </html>
