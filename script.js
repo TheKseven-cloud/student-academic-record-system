@@ -323,9 +323,7 @@ async function submitForm(){
     for(const status of statuses){
         const semester = status.dataset.semester;
 
-        // ==========================================
         // THE FIX: Silently skip empty dropdowns!
-        // ==========================================
         if(status.value === ""){
             continue; 
         }
@@ -430,7 +428,7 @@ async function submitForm(){
         submitBtn.textContent = "Submitted Successfully ✅";
 
         setTimeout(() => {
-            submitBtn.textContent = "Submit Record";
+            submitBtn.textContent = "Submit Academic Record";
             submitBtn.disabled = false;
         }, 3000);
 
