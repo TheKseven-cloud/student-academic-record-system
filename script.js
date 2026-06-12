@@ -280,248 +280,166 @@ submitForm
 
 async function submitForm(){
 
-const studentName =
-document.getElementById(
-"studentName"
-).value.trim();
-
-const rollNumber =
-document.getElementById(
-"rollNumber"
-).value.trim();
+    const studentName = document.getElementById("studentName").value.trim();
+    const rollNumber = document.getElementById("rollNumber").value.trim();
+    
     if (!/^\d{5}$/.test(rollNumber)) {
-    alert("Please enter exactly 5 digits");
-    return;
-}
+        alert("Please enter exactly 5 digits for Roll Number");
+        return;
+    }
+    const enrollmentNo = "24BCA" + rollNumber;
 
-const enrollmentNo = "24BCA" + rollNumber;
+    const studentMobile = document.getElementById("studentMobile").value.trim();
+    const parentMobile = document.getElementById("parentMobile").value.trim();
 
-const studentMobile =
-document.getElementById(
-"studentMobile"
-).value.trim();
-
-const parentMobile =
-document.getElementById(
-"parentMobile"
-).value.trim();
-
-if(studentName === ""){
-    alert("Please enter Student Name.");
-    return;
-}
-
-if(rollNumber === ""){
-    alert("Please enter Enrollment Number.");
-    return;
-}
-
-if(!/^\d+$/.test(rollNumber)){
-    alert("Roll Number must contain 5 digits only.");
-    return;
-}
-
-if(studentMobile === ""){
-    alert("Please enter Student Mobile Number.");
-    return;
-}
-
-if(!/^\d{10}$/.test(studentMobile)){
-    alert("Student Mobile Number must contain exactly 10 digits.");
-    return;
-}
-
-if(parentMobile === ""){
-    alert("Please enter Parent Mobile Number.");
-    return;
-}
-
-if(!/^\d{10}$/.test(parentMobile)){
-    alert("Parent Mobile Number must contain exactly 10 digits.");
-    return;
-}
-
-const semesterData = [];
-
-const statuses =
-document.querySelectorAll(".result-status");
-
-for(const status of statuses){
-
-    const semester =
-    status.dataset.semester;
-
-    if(status.value === ""){
-        alert(
-        `Please select Result Status for Semester ${semester}`
-        );
+    if(studentName === ""){
+        alert("Please enter Student Name.");
         return;
     }
 
-    const container =
-    document.getElementById(
-    `semester${semester}Container`
-    );
-
-    if(status.value === "pass"){
-
-        const sgpa =
-        container.querySelector(
-        'input[type="number"]'
-        );
-
-        const sgpaValue = parseFloat(sgpa.value);
-
-if (sgpaValue < 0 || sgpaValue > 10) {
-    alert(`SGPA for Semester ${semester} must be between 0 and 10`);
-    return;
-}
-
-        if(
-            !sgpa ||
-            sgpa.value.trim() === ""
-        ){
-            alert(
-            `Please enter SGPA for Semester ${semester}`
-            );
-            return;
-        }
-
-        semesterData.push({
-            semester: semester,
-            status: "Passed",
-            sgpa: sgpa.value
-        });
-
+    if(studentMobile === ""){
+        alert("Please enter Student Mobile Number.");
+        return;
     }
 
-    else if(status.value === "atkt"){
+    if(!/^\d{10}$/.test(studentMobile)){
+        alert("Student Mobile Number must contain exactly 10 digits.");
+        return;
+    }
 
-        const cards =
-        container.querySelectorAll(
-        ".atkt-card"
-        );
+    if(parentMobile === ""){
+        alert("Please enter Parent Mobile Number.");
+        return;
+    }
 
-        if(cards.length === 0){
-            alert(
-            `Please enter ATKT details for Semester ${semester}`
-            );
-            return;
+    if(!/^\d{10}$/.test(parentMobile)){
+        alert("Parent Mobile Number must contain exactly 10 digits.");
+        return;
+    }
+
+    const semesterData = [];
+    const statuses = document.querySelectorAll(".result-status");
+
+    for(const status of statuses){
+        const semester = status.dataset.semester;
+
+        // ==========================================
+        // THE FIX: Silently skip empty dropdowns!
+        // ==========================================
+        if(status.value === ""){
+            continue; 
         }
 
-        const atktSubjects = [];
+        const container = document.getElementById(`semester${semester}Container`);
 
-        for(const card of cards){
-
-            const selects =
-            card.querySelectorAll("select");
-
-            const inputs =
-            card.querySelectorAll("input");
-
-            const subject =
-            selects[0].value;
-
-            const attempt =
-            selects[1].value;
-
-            const previousMarks =
-            inputs[0].value;
-
-            const currentMarks =
-            inputs[1].value;
-
-            const currentStatus =
-            selects[2].value;
-
-            if(subject === ""){
-                alert(
-                `Please select subject in Semester ${semester}`
-                );
+        if(status.value === "pass"){
+            const sgpa = container.querySelector('input[type="number"]');
+            
+            if(!sgpa || sgpa.value.trim() === ""){
+                alert(`Please enter SGPA for Semester ${semester}`);
                 return;
             }
 
-            if(previousMarks === ""){
-                alert(
-                `Please enter Previous Marks in Semester ${semester}`
-                );
+            const sgpaValue = parseFloat(sgpa.value);
+            if (sgpaValue < 0 || sgpaValue > 10) {
+                alert(`SGPA for Semester ${semester} must be between 0 and 10`);
                 return;
             }
 
-            if(currentMarks === ""){
-                alert(
-                `Please enter Current Marks in Semester ${semester}`
-                );
-                return;
-            }
-
-            atktSubjects.push({
-                subject,
-                attempt,
-                previousMarks,
-                currentMarks,
-                currentStatus
+            semesterData.push({
+                semester: semester,
+                status: "Passed",
+                sgpa: sgpa.value
             });
-
         }
+        else if(status.value === "atkt"){
+            const cards = container.querySelectorAll(".atkt-card");
 
-        semesterData.push({
-            semester: semester,
-            status: "ATKT",
-            subjects: atktSubjects
-        });
+            if(cards.length === 0){
+                alert(`Please enter ATKT details for Semester ${semester}`);
+                return;
+            }
 
+            const atktSubjects = [];
+
+            for(const card of cards){
+                const selects = card.querySelectorAll("select");
+                const inputs = card.querySelectorAll("input");
+
+                const subject = selects[0].value;
+                const attempt = selects[1].value;
+                const previousMarks = inputs[0].value;
+                const currentMarks = inputs[1].value;
+                const currentStatus = selects[2].value;
+
+                if(subject === ""){
+                    alert(`Please select subject in Semester ${semester}`);
+                    return;
+                }
+
+                if(previousMarks === ""){
+                    alert(`Please enter Previous Marks in Semester ${semester}`);
+                    return;
+                }
+
+                if(currentMarks === ""){
+                    alert(`Please enter Current Marks in Semester ${semester}`);
+                    return;
+                }
+
+                atktSubjects.push({
+                    subject, attempt, previousMarks, currentMarks, currentStatus
+                });
+            }
+
+            semesterData.push({
+                semester: semester,
+                status: "ATKT",
+                subjects: atktSubjects
+            });
+        }
     }
 
-}
+    // Check if they left ALL semesters blank
+    if (semesterData.length === 0) {
+        alert("Please fill out at least one semester result before submitting.");
+        return;
+    }
 
-const data = {
+    const data = {
+        name: studentName,
+        roll: enrollmentNo,
+        studentMobile: studentMobile,
+        parentMobile: parentMobile,
+        semesters: semesterData
+    };
 
-    name: studentName,
+    const submitBtn = document.getElementById("submitBtn");
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting...";
 
-    roll: enrollmentNo,
+    try {
+        const response = await fetch(
+            "https://script.google.com/macros/s/AKfycbyrGFZ31tcnvyyh4jxVNGaYQoG6wVMlJFTrSLwPdKCTgL2sxwxQJspR27qROnYRduve/exec",
+            {
+                method: "POST",
+                body: JSON.stringify(data)
+            }
+        );
 
-    studentMobile: studentMobile,
+        submitBtn.textContent = "Submitted Successfully ✅";
 
-    parentMobile: parentMobile,
+        setTimeout(() => {
+            submitBtn.textContent = "Submit Record";
+            submitBtn.disabled = false;
+        }, 3000);
 
-    semesters: semesterData
-
-};
-
-const submitBtn =
-document.getElementById("submitBtn");
-
-submitBtn.disabled = true;
-submitBtn.textContent = "Submitting...";
-
-try {
-
-    const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbyrGFZ31tcnvyyh4jxVNGaYQoG6wVMlJFTrSLwPdKCTgL2sxwxQJspR27qROnYRduve/exec",
-        {
-            method: "POST",
-            body: JSON.stringify(data)
-        }
-    );
-
-    submitBtn.textContent = "Submitted Successfully ✅";
-
-    setTimeout(() => {
-        submitBtn.textContent = "Submit Record";
+    }
+    catch(error){
+        submitBtn.textContent = "Submission Failed ❌";
         submitBtn.disabled = false;
-    }, 3000);
-
-}
-catch(error){
-
-    submitBtn.textContent = "Submission Failed ❌";
-    submitBtn.disabled = false;
-
-    alert(
-        "Error: " + error
-    );
-
+        alert("Error: " + error);
+    }
 }
 
 console.log(data);
