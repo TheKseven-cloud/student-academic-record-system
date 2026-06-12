@@ -1,16 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <script>
-    // Check if user is logged in
-    const authStatus = sessionStorage.getItem('isLoggedIn');
-    
-    // Only redirect if they DON'T have the key
-    if (!authStatus) {
-        // Double check: If they are already on login, don't loop
-        if (window.location.pathname !== '/login.html') {
-            window.location.href = 'login.html';
-        }
+  <script>
+    if (sessionStorage.getItem('isLoggedIn') !== 'true') {
+        window.location.href = 'login.html';
     }
 </script>
     <meta charset="UTF-8">
