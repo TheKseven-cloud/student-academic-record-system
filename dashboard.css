@@ -1,0 +1,522 @@
+/* Base Reset & Variables for Dark/Light Mode */
+* {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Light Mode Variables (Default) */
+:root {
+    --bg-color: #f2f2f7;
+    --text-main: #1d1d1f;
+    --text-muted: #4a4a4e;
+    --glass-bg: rgba(255, 255, 255, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.8);
+    --glass-shadow: rgba(0, 0, 0, 0.08);
+    --ring-track: rgba(0, 0, 0, 0.05);
+    --btn-bg: #1d1d1f;
+    --btn-text: #ffffff;
+}
+
+/* Dark Mode Variables */
+[data-theme="dark"] {
+    --bg-color: #0d0d12;
+    --text-main: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.7);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --glass-shadow: rgba(0, 0, 0, 0.3);
+    --ring-track: rgba(255, 255, 255, 0.1);
+    --btn-bg: rgba(255, 255, 255, 0.9);
+    --btn-text: #0d0d12;
+}
+
+body {
+    background-color: var(--bg-color); 
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; 
+    transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition when toggling */
+}
+
+/* ... Keep all your existing .orb CSS here ... */
+
+/* --- AMBIENT HOLLOW BUBBLES --- */
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    /* Reduced blur slightly so the hollow shape holds together */
+    filter: blur(35px); 
+    background: transparent; /* Makes the center hollow */
+    z-index: -1; 
+    opacity: 0.85;
+}
+
+.orb-1 {
+    width: 350px;
+    height: 350px;
+    border: 40px solid #ff2a85; /* Thick border creates the ring */
+    top: -5%;
+    left: -5%;
+    animation: float 6s infinite alternate ease-in-out;
+}
+
+.orb-2 {
+    width: 450px;
+    height: 450px;
+    border: 50px solid #8a2be2; 
+    bottom: -15%;
+    right: -5%;
+    animation: float 8s infinite alternate ease-in-out -3s; 
+}
+
+.orb-3 {
+    width: 280px;
+    height: 280px;
+    border: 35px solid #00d2ff; 
+    top: 35%;
+    left: 45%;
+    animation: float 5s infinite alternate ease-in-out -1s;
+}
+
+/* Animation keyframes */
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(120px, 180px) scale(1.1); }
+    66% { transform: translate(-80px, 120px) scale(0.95); }
+    100% { transform: translate(180px, -80px) scale(1.15); }
+}
+
+/* --- LIQUID GLASS LOGIN CARD (LIGHT MODE) --- */
+.login-card {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px); 
+    
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    border-right: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.08);
+    
+    padding: 40px;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 400px;
+    z-index: 10; 
+}
+
+.login-card h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Form Inputs */
+.input-group {
+    margin-bottom: 24px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #4a4a4e;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    font-size: 16px;
+    color: #1d1d1f;
+    transition: all 0.3s ease;
+}
+
+.input-group input::placeholder {
+    color: #86868b;
+}
+
+.input-group input:focus {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(0, 122, 255, 0.4); 
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
+}
+
+/* Submit Button */
+button {
+    width: 100%;
+    padding: 16px;
+    background: #1d1d1f; 
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Status Message */
+#status-message {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    min-height: 20px;
+    font-weight: 600;
+}
+
+.error { color: #ff3b30; } 
+.success { color: #34c759; }
+
+/* =========================================
+   DASHBOARD STYLES (Upgraded Liquid Glass)
+   ========================================= */
+
+.dashboard-body {
+    display: block; 
+    overflow-y: auto;
+    padding: 20px;
+    height: 100%;
+}
+
+.nav-controls {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.theme-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Upgraded Glass Cards */
+.glass-nav, .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 30px 0 var(--glass-shadow);
+    transition: all 0.5s ease; /* Smooth theme transition */
+}
+
+.glass-nav {
+    border-radius: 16px;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.glass-nav h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.logout-btn {
+    width: auto;
+    padding: 8px 20px;
+    font-size: 14px;
+    background: transparent;
+    color: #ff3b30;
+    border: 1px solid #ff3b30;
+}
+
+.logout-btn:hover {
+    background: #ff3b30;
+    color: white;
+}
+
+.dashboard-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.glass-card {
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.glass-card h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--ring-track);
+    padding-bottom: 10px;
+}
+
+/* Liquid SVG Progress Rings */
+.rings-section {
+    text-align: center;
+}
+
+.rings-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 10px;
+}
+
+.ring-wrapper {
+    position: relative;
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease; /* Fun hover effect */
+}
+
+.ring-wrapper:hover {
+    transform: translateY(-5px) scale(1.05);
+}
+
+.progress-ring {
+    transform: rotate(-90deg); 
+    /* This drop-shadow creates the 3D Liquid Glow effect */
+    filter: drop-shadow(0px 0px 8px rgba(0,0,0,0.2));
+}
+
+.progress-ring circle {
+    fill: transparent;
+    stroke-width: 14; /* Thicker for a more liquid feel */
+    stroke-linecap: round; 
+}
+
+.ring-bg {
+    stroke: var(--ring-track);
+    transition: stroke 0.5s ease;
+}
+
+.ring-progress {
+    /* Larger circumference for r=60 is ~377 */
+    stroke-dasharray: 377; 
+    stroke-dashoffset: 377;
+    /* Springy, satisfying animation curve */
+    transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+/* Vibrant Glow Colors */
+.ring-green { stroke: #34c759; filter: drop-shadow(0 0 10px rgba(52, 199, 89, 0.4)); }
+.ring-blue { stroke: #0a84ff; filter: drop-shadow(0 0 10px rgba(10, 132, 255, 0.4)); }
+.ring-pink { stroke: #ff2d55; filter: drop-shadow(0 0 10px rgba(255, 45, 85, 0.4)); }
+
+.ring-text {
+    position: absolute;
+    top: 60px; 
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--text-main);
+    transition: color 0.5s ease;
+}
+
+.ring-label {
+    margin-top: 15px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+/* Lower Grid Layout Updates */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
+}
+
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr; 
+    }
+}
+
+.announcement-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.announcement-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--ring-track);
+}
+
+.announcement-list a {
+    text-decoration: none;
+    color: #0a84ff;
+    font-weight: 500;
+}
+
+.announcement-list a:hover {
+    text-decoration: underline;
+}
+
+.actions-column {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.action-btn {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.action-btn.secondary {
+    background: transparent;
+    color: var(--text-main);
+    border: 2px solid var(--text-main);
+}
+
+.action-btn.secondary:hover {
+    background: var(--ring-track);
+    box-shadow: none;
+}
+
+.status-badge {
+    font-weight: bold;
+    color: var(--text-muted);
+}
+
+/* --- LOGIN TABS (Segmented Control) --- */
+.login-tabs {
+    display: flex;
+    background: var(--ring-track); /* Uses the translucent variable from our themes */
+    border-radius: 14px;
+    padding: 5px;
+    margin-bottom: 25px;
+}
+
+.login-tab {
+    flex: 1;
+    text-align: center;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.login-tab:hover {
+    color: var(--text-main);
+}
+
+.login-tab.active {
+    background: var(--glass-bg);
+    color: var(--text-main);
+    box-shadow: 0 4px 12px var(--glass-shadow);
+    border: 1px solid var(--glass-border);
+}
+
+/* =========================================
+   8. MODAL (POP-UP) STYLES
+   ========================================= */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Hidden by default with smooth fade */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+}
+
+/* When the .active class is added via JS, it appears */
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    width: 95%;
+    max-width: 1200px;
+    position: relative;
+    
+    /* Starts slightly lower and smaller for the slide-up effect */
+    transform: translateY(50px) scale(0.95);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0) scale(1);
+}
+
+.modal-scroll-area {
+    max-height: 85vh; /* Prevents the modal from being taller than the screen */
+    overflow-y: auto; /* Adds a scrollbar inside the modal */
+    padding: 20px 0;
+    border-radius: 30px;
+    /* Custom scrollbar hiding for cleaner look */
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) transparent;
+}
+
+/* Close Button Styling */
+.close-btn {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: white;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 1100;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.close-btn:hover {
+    background: var(--warning);
+    transform: rotate(90deg); /* Fun spin effect */
+}
