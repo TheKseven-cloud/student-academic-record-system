@@ -1,60 +1,106 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
 
-/* ==========================================================================
-   1. RESET & VARIABLES
-   ========================================================================== */
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Manrope', sans-serif; }
 
 :root {
-    --bg-dark: #0a0a0f; --bg-light: #f1f5f9;
-    --card-dark: rgba(255, 255, 255, 0.04); --card-light: rgba(255, 255, 255, 0.7);
-    --text-dark: #ffffff; --text-light: #1e293b;
-    --border-dark: rgba(255, 255, 255, 0.1); --border-light: rgba(0, 0, 0, 0.1);
-    --accent-blue: #00d2ff; --accent-purple: #8a2be2;
+    --bg: #0a0a0f;
+    --card: rgba(255, 255, 255, 0.05);
+    --text: #ffffff;
+    --muted: rgba(255, 255, 255, 0.6);
+    --border: rgba(255, 255, 255, 0.1);
+    --primary: #00d2ff;
+    --secondary: #8a2be2;
+    --warning: #ff2a85;
 }
 
-[data-theme="light"] { --bg: var(--bg-light); --card: var(--card-light); --text: var(--text-light); --border: var(--border-light); --input-bg: rgba(0,0,0,0.05); }
-[data-theme="dark"] { --bg: var(--bg-dark); --card: var(--card-dark); --text: var(--text-dark); --border: var(--border-dark); --input-bg: rgba(0,0,0,0.3); }
+[data-theme="light"] {
+    --bg: #f1f5f9;
+    --card: rgba(255, 255, 255, 0.7);
+    --text: #1e293b;
+    --border: rgba(0, 0, 0, 0.1);
+}
 
-body { background-color: var(--bg); color: var(--text); min-height: 100vh; padding: 40px 20px; transition: 0.4s; }
+body {
+    background-color: var(--bg);
+    min-height: 100vh;
+    padding: 40px 20px;
+    overflow-x: hidden;
+    color: var(--text);
+    transition: 0.4s;
+}
 
-/* ==========================================================================
-   2. GLASS PANEL COMPONENTS
-   ========================================================================== */
-.hero, .profile-card, .semester-card, .atkt-card {
+/* Ambient Background Orbs */
+body::before, body::after {
+    content: "";
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: -1;
+    opacity: 0.7;
+}
+
+body::before {
+    width: 60vw; height: 60vw;
+    background: var(--secondary);
+    top: -20%; left: -10%;
+    animation: floatA 12s infinite ease-in-out;
+}
+
+body::after {
+    width: 50vw; height: 50vw;
+    background: var(--primary);
+    bottom: -10%; right: -5%;
+    animation: floatB 15s infinite ease-in-out;
+}
+
+@keyframes floatA { 50% { transform: translate(60px, 40px); } }
+@keyframes floatB { 50% { transform: translate(-50px, -30px); } }
+
+.container { max-width: 1400px; margin: auto; }
+
+/* Liquid Glass Panels */
+.hero, .stat-card, .profile-card, .semester-card, .atkt-card {
     background: var(--card) !important;
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
     border: 1px solid var(--border) !important;
-    border-radius: 24px;
-    padding: 30px;
-    margin-bottom: 25px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
 }
 
-/* ==========================================================================
-   3. UNIFIED INPUT SYSTEM (Fixes Alignment)
-   ========================================================================== */
-.form-group { margin-bottom: 20px; }
-label { display: block; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; color: var(--text); opacity: 0.7; }
+.hero { padding: 50px; margin-bottom: 30px; text-align: center; }
 
-/* Enforce EXACT same height and padding for ALL inputs */
-input, select, .enroll-box {
+/* Frosted Forms */
+.form-group { margin-bottom: 18px; }
+label { display: block; margin-bottom: 8px; font-size: 14px; font-weight: 700; color: var(--muted); }
+
+input, select {
     width: 100%;
-    height: 56px; 
-    padding: 16px 20px;
+    height: 56px;
+    padding: 15px 16px;
     border-radius: 16px;
-    border: 1px solid var(--border) !important;
-    background: var(--input-bg) !important;
-    color: var(--text) !important;
-    font-size: 1rem;
+    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.4);
+    color: var(--text);
+    font-size: 15px;
+    transition: .25s;
 }
 
-/* Enrollment Box Specifics */
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(0, 210, 255, 0.15);
+}
+
+/* Perfect Alignment for Enrollment Box */
 .enroll-box {
     display: flex;
     align-items: center;
-    padding: 0; /* Remove padding to handle internal elements */
+    width: 100%;
+    height: 56px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border);
+    border-radius: 16px;
     overflow: hidden;
 }
 
@@ -63,27 +109,42 @@ input, select, .enroll-box {
     height: 100%;
     display: flex;
     align-items: center;
-    background: rgba(128,128,128,0.1);
-    color: var(--accent-blue);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--primary);
     font-weight: 800;
     border-right: 1px solid var(--border);
 }
 
 .enroll-box input {
     height: 100%;
-    margin: 0;
-    background: transparent !important;
+    padding: 0 16px;
     border: none !important;
+    background: transparent !important;
+    margin: 0;
 }
 
-/* ==========================================================================
-   4. LAYOUT & BUTTONS
-   ========================================================================== */
-.container { max-width: 1200px; margin: 0 auto; }
-.semester-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; }
-
+/* Submit Button */
 #submitBtn {
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-    color: white; border: none; padding: 20px; border-radius: 16px;
-    font-weight: 800; font-size: 1.1rem; cursor: pointer; width: 100%;
+    width: 100%;
+    padding: 24px;
+    border: none;
+    border-radius: 24px;
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    transition: .3s;
 }
+
+#submitBtn:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0, 210, 255, 0.3); }
+
+/* Layout Grid */
+.semester-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 20px;
+}
+
+@media(max-width: 900px) { .semester-grid { grid-template-columns: 1fr; } }
