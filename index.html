@@ -1,357 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Student Academic Portal</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Academic Records</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
 </head>
-
-<body>
-
-    <div id="particles"></div>
-
-<div class="container">
-
-    <div style="margin-bottom: 20px;">
-    <button onclick="window.location.href='student-dashboard.html'" style="padding: 12px 24px; background: rgba(0, 210, 255, 0.1); border: 1px solid var(--primary); color: var(--primary); border-radius: 12px; cursor: pointer; font-weight: bold; transition: 0.3s;" onmouseover="this.style.background='rgba(0, 210, 255, 0.2)'" onmouseout="this.style.background='rgba(0, 210, 255, 0.1)'">
-        ← Back to Dashboard
-    </button>
-</div>
-
-    <!-- HERO -->
-
-    <div class="hero">
-
-        <div class="hero-content">
-
-            <span class="hero-badge">
-                Academic Intelligence System
-            </span>
-
-            <h1>
-                Student Academic Portal
-            </h1>
-
-            <p>
-                Manage semester records, SGPA and ATKT information
-                from a single dashboard.
-            </p>
-
-        </div>
-
-    </div>
-
-    <div class="stats-bar">
-
-    <div class="stat-card">
-        <span class="stat-number">6</span>
-        <span class="stat-label">Semesters</span>
-    </div>
-
-    <div class="stat-card">
-        <span class="stat-number">ATKT</span>
-        <span class="stat-label">Tracking</span>
-    </div>
-
-    <div class="stat-card">
-        <span class="stat-number">2026</span>
-        <span class="stat-label">Academic Year</span>
-    </div>
-
-</div>
-
-    <!-- MAIN DASHBOARD -->
-
-    <div class="dashboard">
-
-        <!-- STUDENT PROFILE -->
-
-        <section class="profile-card">
-
-            <div class="section-header">
-
-                <h2>
-                    Student Information
-                </h2>
-
-            </div>
-
-            <div class="profile-grid">
-
-                <div class="form-group">
-
-                    <label>
-                        Student Name
-                    </label>
-
-                    <input
-                    type="text"
-                    id="studentName">
-
-                </div>
-
-                <div class="form-group">
-
-                    <label>
-                        Enrollment No.
-                    </label>
-                               <div class="enroll-box">
-                                <span class="prefix">24BCA</span>
-
-                                    <input
-                                        type="text"
-                                        id="rollNumber"
-                                        maxlength="5"
-                                        placeholder="Last 5 digits">
-                                </div>
-                </div>
-
-                <div class="form-group">
-
-                    <label>
-                        Student Mobile Number
-                    </label>
-
-                    <input
-                    type="tel"
-                    id="studentMobile">
-
-                </div>
-
-                <div class="form-group">
-
-                    <label>
-                        Parent Mobile Number
-                    </label>
-
-                    <input
-                    type="tel"
-                    id="parentMobile">
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- SEMESTERS -->
-
-        <div class="semester-grid">
-
-            <!-- SEM 1 -->
-
-            <section class="semester-card">
-
-                <h2>
-                    Semester 1
-                </h2>
-
-                <div class="form-group">
-
-                    <label>
-                        Result Status
-                    </label>
-
-                    <select
-                    class="result-status"
-                    data-semester="1">
-
-                        <option value="">
-                            Select Status
-                        </option>
-
-                        <option value="pass">
-                            Passed
-                        </option>
-
-                        <option value="atkt">
-                            ATKT
-                        </option>
-
-                    </select>
-
-                </div>
-
-                <div
-                id="semester1Container">
-                </div>
-
-            </section>
-
-            <!-- SEM 2 -->
-
-            <section class="semester-card">
-
-                <h2>
-                    Semester 2
-                </h2>
-
-                <div class="form-group">
-
-                    <label>
-                        Result Status
-                    </label>
-
-                    <select
-                    class="result-status"
-                    data-semester="2">
-
-                        <option value="">
-                            Select Status
-                        </option>
-
-                        <option value="pass">
-                            Passed
-                        </option>
-
-                        <option value="atkt">
-                            ATKT
-                        </option>
-
-                    </select>
-
-                </div>
-
-                <div
-                id="semester2Container">
-                </div>
-
-            </section>
-
-            <!-- SEM 3 -->
-
-            <section class="semester-card">
-
-                <h2>
-                    Semester 3
-                </h2>
-
-                <div class="form-group">
-
-                    <label>
-                        Result Status
-                    </label>
-
-                    <select
-                    class="result-status"
-                    data-semester="3">
-
-                        <option value="">
-                            Select Status
-                        </option>
-
-                        <option value="pass">
-                            Passed
-                        </option>
-
-                        <option value="atkt">
-                            ATKT
-                        </option>
-
-                    </select>
-
-                </div>
-
-                <div
-                id="semester3Container">
-                </div>
-
-            </section>
-
-            <!-- SEM 4 -->
-
-            <section class="semester-card">
-
-                <h2>
-                    Semester 4
-                </h2>
-
-                <div class="form-group">
-
-                    <label>
-                        Result Status
-                    </label>
-
-                    <select
-                    class="result-status"
-                    data-semester="4">
-
-                        <option value="">
-                            Select Status
-                        </option>
-
-                        <option value="pass">
-                            Passed
-                        </option>
-
-                        <option value="atkt">
-                            ATKT
-                        </option>
-
-                    </select>
-
-                </div>
-
-                <div
-                id="semester4Container">
-                </div>
-
-            </section>
-
-            <section class="semester-card">
-                <h2>Semester 5</h2>
-                <div class="form-group">
-                    <label>Result Status</label>
-                    <select class="result-status" data-semester="5">
-                        <option value="">Select Status</option>
-                        <option value="pass">Passed</option>
-                        <option value="atkt">ATKT</option>
-                    </select>
-                </div>
-                <div id="semester5Container"></div>
-            </section>
-
-            <section class="semester-card">
-                <h2>Semester 6</h2>
-                <div class="form-group">
-                    <label>Result Status</label>
-                    <select class="result-status" data-semester="6">
-                        <option value="">Select Status</option>
-                        <option value="pass">Passed</option>
-                        <option value="atkt">ATKT</option>
-                    </select>
-                </div>
-                <div id="semester6Container"></div>
-            </section>
-
-        </div>
-
-        <!-- SUBMIT -->
-
-        <div class="submit-section">
-
-            <button
-            id="submitBtn">
-
-                Submit Academic Record
-
+<body class="dashboard-body" data-theme="light">
+
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <nav class="glass-nav">
+        <h2>Academic Portal</h2>
+        <div class="nav-controls">
+            <button id="themeToggle" class="action-btn secondary theme-btn">🌙 Dark Mode</button>
+            <button onclick="window.location.href='student-dashboard.html'" class="action-btn" style="background: transparent; border: 1px solid var(--primary); color: var(--primary);">
+                ← Back to Dashboard
             </button>
+        </div>
+    </nav>
 
+    <div class="container" style="margin-top: 40px; position: relative; z-index: 10;">
+        
+        <div class="hero" style="background: var(--card); backdrop-filter: blur(15px); border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            <div class="hero-content">
+                <span class="hero-badge" style="background: var(--primary); color: white;">Academic Intelligence System</span>
+                <h1 style="background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Submit Records</h1>
+                <p style="color: var(--muted);">Enter your 6-semester progression data carefully.</p>
+            </div>
         </div>
 
+        <div class="dashboard">
+            <section class="profile-card" style="background: var(--card); backdrop-filter: blur(15px); border: 1px solid var(--border);">
+                <div class="section-header">
+                    <h2 style="color: var(--text);">Student Information</h2>
+                </div>
+                <div class="profile-grid">
+                    <div class="form-group">
+                        <label style="color: var(--muted);">Student Name</label>
+                        <input type="text" id="studentName" style="background: rgba(255,255,255,0.05); color: var(--text); border: 1px solid var(--border);">
+                    </div>
+                    <div class="form-group">
+                        <label style="color: var(--muted);">Enrollment No.</label>
+                        <div class="enroll-box" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border);">
+                            <span class="prefix" style="color: var(--primary);">24BCA</span>
+                            <input type="text" id="rollNumber" maxlength="5" placeholder="Last 5 digits" style="color: var(--text);">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label style="color: var(--muted);">Student Mobile</label>
+                        <input type="tel" id="studentMobile" style="background: rgba(255,255,255,0.05); color: var(--text); border: 1px solid var(--border);">
+                    </div>
+                    <div class="form-group">
+                        <label style="color: var(--muted);">Parent Mobile</label>
+                        <input type="tel" id="parentMobile" style="background: rgba(255,255,255,0.05); color: var(--text); border: 1px solid var(--border);">
+                    </div>
+                </div>
+            </section>
+
+            <div class="semester-grid">
+                
+                <section class="semester-card" style="background: var(--card); backdrop-filter: blur(15px); border: 1px solid var(--border);">
+                    <h2 style="color: var(--text);">Semester 1</h2>
+                    <div class="form-group">
+                        <label style="color: var(--muted);">Result Status</label>
+                        <select class="result-status" data-semester="1" style="background: rgba(255,255,255,0.05); color: var(--text); border: 1px solid var(--border);">
+                            <option value="" style="color: black;">Select Status</option>
+                            <option value="pass" style="color: black;">Passed</option>
+                            <option value="atkt" style="color: black;">ATKT</option>
+                        </select>
+                    </div>
+                    <div id="semester1Container"></div>
+                </section>
+
+                <section class="semester-card" style="background: var(--card); backdrop-filter: blur(15px); border: 1px solid var(--border);">
+                    <h2 style="color: var(--text);">Semester 2</h2>
+                    <div class="form-group">
+                        <label style="color: var(--muted);">Result Status</label>
+                        <select class="result-status" data-semester="2" style="background: rgba(255,255,255,0.05); color: var(--text); border: 1px solid var(--border);">
+                            <option value="" style="color: black;">Select Status</option>
+                            <option value="pass" style="color: black;">Passed</option>
+                            <option value="atkt" style="color: black;">ATKT</option>
+                        </select>
+                    </div>
+                    <div id="semester2Container"></div>
+                </section>
+
+                <section class="semester-card" style="background: var(--card); backdrop-filter: blur(15px); border: 1px solid var(--border);">
+                    <h2 style="color: var(--text);">Semester 3</h2>
+                    <div class="form-group">
+                        <label style="color: var(--muted);">Result Status</label>
+                        <select class="result-status" data-semester="3" style="background: rgba(255,255,255,0.05); color: var(--text); border: 1px solid var(--border);">
+                            <option value="" style="color: black;">Select Status</option>
+                            <option value="pass" style="color: black;">Passed</option>
+                            <option value="atkt" style="color: black;">ATKT</option>
+                        </select>
+                    </div>
+                    <div id="semester3Container"></div>
+                </section>
+
+                <section class="semester-card" style="background: var(--card); backdrop-filter: blur(15px); border: 1px solid var(--border);">
+                    <h2 style="color: var(--text);">Semester 4</h2>
+                    <div class="form-group">
+                        <label style="color: var(--muted);">Result Status</label>
+                        <select class="result-status" data-semester="4" style="background: rgba(255,255,255,0.05); color: var(--text); border: 1px solid var(--border);">
+                            <option value="" style="color: black;">Select Status</option>
+                            <option value="pass" style="color: black;">Passed</option>
+                            <option value="atkt" style="color: black;">ATKT</option>
+                        </select>
+                    </div>
+                    <div id="semester4Container"></div>
+                </section>
+
+                <section class="semester-card" style="background: var(--card); backdrop-filter: blur(15px); border: 1px solid var(--border);">
+                    <h2 style="color: var(--text);">Semester 5</h2>
+                    <div class="form-group">
+                        <label style="color: var(--muted);">Result Status</label>
+                        <select class="result-status" data-semester="5" style="background: rgba(255,255,255,0.05); color: var(--text); border: 1px solid var(--border);">
+                            <option value="" style="color: black;">Select Status</option>
+                            <option value="pass" style="color: black;">Passed</option>
+                            <option value="atkt" style="color: black;">ATKT</option>
+                        </select>
+                    </div>
+                    <div id="semester5Container"></div>
+                </section>
+
+                <section class="semester-card" style="background: var(--card); backdrop-filter: blur(15px); border: 1px solid var(--border);">
+                    <h2 style="color: var(--text);">Semester 6</h2>
+                    <div class="form-group">
+                        <label style="color: var(--muted);">Result Status</label>
+                        <select class="result-status" data-semester="6" style="background: rgba(255,255,255,0.05); color: var(--text); border: 1px solid var(--border);">
+                            <option value="" style="color: black;">Select Status</option>
+                            <option value="pass" style="color: black;">Passed</option>
+                            <option value="atkt" style="color: black;">ATKT</option>
+                        </select>
+                    </div>
+                    <div id="semester6Container"></div>
+                </section>
+
+            </div>
+
+            <div class="submit-section" style="margin-top: 30px;">
+                <button id="submitBtn" class="action-btn" style="width: 100%; padding: 15px; font-size: 18px;">Submit Academic Record</button>
+            </div>
+        </div>
     </div>
 
-</div>
+    <script src="script.js"></script>
 
-<script src="script.js"></script>
+    <script>
+        const themeBtn = document.getElementById('themeToggle');
+        const body = document.body;
 
+        // Pull the exact theme the user selected on the dashboard
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        body.setAttribute('data-theme', currentTheme);
+        themeBtn.innerHTML = currentTheme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode';
+
+        // Allow toggling from this page too
+        themeBtn.addEventListener('click', () => {
+            const newTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeBtn.innerHTML = newTheme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode';
+        });
+    </script>
 </body>
-
 </html>
