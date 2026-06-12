@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-body" data-theme="light">
+
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <nav class="glass-nav">
+        <h2>Student Portal</h2>
+        <div class="nav-controls">
+            <button id="themeToggle" class="action-btn secondary theme-btn">🌙 Dark Mode</button>
+            <button class="logout-btn" onclick="window.location.href='login.html'">Logout</button>
+        </div>
+    </nav>
+
+    <main class="dashboard-container">
+        
+        <section class="glass-card rings-section">
+            <div class="section-header">
+                <h2>Academic Overview</h2>
+            </div>
+            <div class="rings-container">
+                <div class="ring-wrapper">
+                    <svg class="progress-ring" width="140" height="140">
+                        <circle class="ring-bg" cx="70" cy="70" r="60"></circle>
+                        <circle class="ring-progress ring-green" id="syllabus-ring" cx="70" cy="70" r="60"></circle>
+                    </svg>
+                    <div class="ring-text" id="syllabus-text">0%</div>
+                    <p class="ring-label">Total Syllabus</p>
+                </div>
+                <div class="ring-wrapper">
+                    <svg class="progress-ring" width="140" height="140">
+                        <circle class="ring-bg" cx="70" cy="70" r="60"></circle>
+                        <circle class="ring-progress ring-blue" id="performance-ring" cx="70" cy="70" r="60"></circle>
+                    </svg>
+                    <div class="ring-text" id="performance-text">0%</div>
+                    <p class="ring-label">Performance</p>
+                </div>
+                <div class="ring-wrapper">
+                    <svg class="progress-ring" width="140" height="140">
+                        <circle class="ring-bg" cx="70" cy="70" r="60"></circle>
+                        <circle class="ring-progress ring-pink" id="attendance-ring" cx="70" cy="70" r="60"></circle>
+                    </svg>
+                    <div class="ring-text" id="attendance-text">0%</div>
+                    <p class="ring-label">Attendance</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="dashboard-grid">
+            <section class="glass-card">
+                <div class="section-header">
+                    <h2>Latest Announcements</h2>
+                </div>
+                <ul class="announcement-list">
+                    <li><a href="#">PDF: Semester Guidelines Updated</a></li>
+                    <li><a href="#">Data Structures: Linked Lists assignment due Friday</a></li>
+                </ul>
+            </section>
+
+            <div class="actions-column">
+                <section class="glass-card">
+                    <div class="section-header">
+                        <h2>Academic Records</h2>
+                    </div>
+                    <p>Update your details or view your official history.</p>
+                    
+                    <button id="openInputModalBtn" class="action-btn">📝 Submit Semesters</button>
+                    <button id="openViewModalBtn" class="action-btn secondary">📊 View Report Card</button>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <div id="inputModal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="closeInputBtn" class="close-btn">&times;</button>
+            <div class="modal-scroll-area">
+                <div class="container">
+                    
+                    <div class="hero">
+                        <div class="hero-content">
+                            <span class="hero-badge">Academic Intelligence System</span>
+                            <h1>Submit Records</h1>
+                            <p>Enter your 6-semester progression data here.</p>
+                        </div>
+                    </div>
+
+                    <div class="dashboard">
+                        <section class="profile-card">
+                            <div class="section-header"><h2>Student Information</h2></div>
+                            <div class="profile-grid">
+                                <div class="form-group">
+                                    <label>Student Name</label>
+                                    <input type="text" id="studentName">
+                                </div>
+                                <div class="form-group">
+                                    <label>Enrollment No.</label>
+                                    <div class="enroll-box">
+                                        <span class="prefix">24BCA</span>
+                                        <input type="text" id="rollNumber" maxlength="5" placeholder="Last 5 digits">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Student Mobile</label>
+                                    <input type="tel" id="studentMobile">
+                                </div>
+                                <div class="form-group">
+                                    <label>Parent Mobile</label>
+                                    <input type="tel" id="parentMobile">
+                                </div>
+                            </div>
+                        </section>
+
+                        <div class="semester-grid" id="semestersWrapper">
+                            </div>
+
+                        <div class="submit-section">
+                            <button id="submitBtn">Submit Academic Record</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="viewModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 900px;">
+            <button id="closeViewBtn" class="close-btn">&times;</button>
+            <div class="modal-scroll-area">
+                <div class="container">
+                    <div class="hero" style="padding: 30px;">
+                        <h2>Official Academic Report</h2>
+                        <p id="reportStudentName">Loading details...</p>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table class="glass-table">
+                            <thead>
+                                <tr>
+                                    <th>Semester</th>
+                                    <th>SGPA</th>
+                                    <th>ATKT Information</th>
+                                </tr>
+                            </thead>
+                            <tbody id="reportTableBody">
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
