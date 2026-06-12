@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Portal - Login</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body data-theme="light">
+
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <button id="themeToggle" class="action-btn secondary theme-btn" style="position: absolute; top: 20px; right: 20px; width: auto; z-index: 100;">🌙 Dark Mode</button>
+
+    <div class="login-card">
+        <h2>PORTAL LOGIN</h2>
+        
+        <div class="login-tabs">
+            <div class="login-tab active" id="tab-student" onclick="switchTab('student')">Student</div>
+            <div class="login-tab" id="tab-mentor" onclick="switchTab('mentor')">Mentor</div>
+        </div>
+
+        <form id="loginForm">
+            <div class="input-group">
+                <label id="username-label" for="username">Enrollment Number</label>
+                <input type="text" id="username" placeholder="e.g., 24BCA53101" required>
+            </div>
+            
+            <div class="input-group">
+                <label id="password-label" for="password">Password</label>
+                <input type="password" id="password" placeholder="Last 5 digits" required>
+            </div>
+            
+            <button type="submit" id="loginBtn">Sign In</button>
+        </form>
+        <div id="status-message"></div>
+    </div>
+
+    <script>
+        // --- 1. Theme Toggle Logic ---
+        const themeBtn = document.getElementById('themeToggle');
+        const body = document.body;
+
+        themeBtn.addEventListener('click', () => {
+            if (body.getAttribute('data-theme') === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeBtn.textContent = '☀️ Light Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeBtn.textContent = '🌙 Dark Mode';
+            }
+        });
+
+        // --- 2. Tab Switching Logic ---
+        let currentRole = 'student';
+        
+        function switchTab(role) {
+            currentRole = role;
+            
+            // Update Tab UI
+            document.getElementById('tab-student').classList.remove('active');
+            document.getElementById('tab-mentor').classList.remove('active');
+            document.getElementById(`tab-${role}`).classList.add('active');
+
+            // Update Form Labels & Placeholders dynamically
+            const usernameLabel = document.getElementById('username-label');
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+
+            if (role === 'student') {
+                usernameLabel.textContent = "Enrollment Number";
+                usernameInput.placeholder = "e.g., 24BCA53101";
+                passwordInput.placeholder = "Last 5 digits";
+                usernameInput.value = ""; 
+                passwordInput.value = "";
+            } else {
+                usernameLabel.textContent = "Mentor Email / ID";
+                usernameInput.placeholder = "mentor@college.edu";
+                passwordInput.placeholder = "Enter admin password";
+                usernameInput.value = ""; 
+                passwordInput.value = "";
+            }
+        }
+
+        // --- 3. Login Validation Logic ---
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const usernameInput = document.getElementById('username').value.trim();
+            const passwordInput = document.getElementById('password').value.trim();
+            const statusMessage = document.getElementById('status-message');
+            const loginBtn = document.getElementById('loginBtn');
+
+            // STUDENT LOGIN LOGIC
+            if (currentRole === 'student') {
+                const expectedPassword = usernameInput.slice(-5);
+                if (passwordInput !== expectedPassword) {
+                    statusMessage.textContent = "Incorrect password. Use the last 5 digits of your enrollment number.";
+                    statusMessage.className = "error";
+                    return; 
+                }
+            } 
+            // MENTOR LOGIN LOGIC (Placeholder for testing)
+            else if (currentRole === 'mentor') {
+                if (passwordInput !== "admin123") { // Temporary mentor password for frontend testing
+                    statusMessage.textContent = "Invalid Mentor Credentials.";
+                    statusMessage.className = "error";
+                    return;
+                }
+            }
+
+            // UI feedback while "loading"
+            statusMessage.textContent = "Authenticating...";
+            statusMessage.className = "";
+            loginBtn.disabled = true; 
+            loginBtn.textContent = "Signing In...";
+            loginBtn.style.opacity = "0.7";
+
+            // Simulated backend routing
+            setTimeout(() => {
+                if (currentRole === 'student') {
+                    window.location.href = "student-dashboard.html"; // Routes to student view
+                } else {
+                    statusMessage.textContent = "Routing to Master Database..."; // We will build mentor-dashboard.html next
+                    statusMessage.className = "success";
+                }
+                
+                loginBtn.disabled = false;
+                loginBtn.textContent = "Sign In";
+                loginBtn.style.opacity = "1";
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
